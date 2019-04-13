@@ -1,0 +1,27 @@
+<h1>Register</h1>
+<p>Please fill in this form to create an account.</p>
+<hr>
+
+<label ><b>Full Name</b></label>
+<input type="text" placeholder="Enter full Name" name="firstName" (keyup) = "registrationInputForFullName($event)">
+<br/>
+<label ><b>Email</b></label>
+<input type="text" placeholder="Enter Email" name="email" (keyup) = "registrationInputForEmail($event)">
+<br/>
+<label ><b>Password</b></label>
+<input type="password" placeholder="Enter Password" name="psw" (keyup) = "registrationInputForPassword($event)">
+<br/>
+<label ><b>Confirm Password</b></label>
+<input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+<br/>
+<label ><b>DOB</b></label>
+<input type="date" placeholder="enter DOB" name="dob" required>
+<br/>
+<label ><b>profile pic</b></label>
+<input type="file" name="profilePic" accept="image/*" (change) = "onImageUpload($event)">
+<br/>
+<hr>
+
+
+
+<button type="submit" (click) = "validateRegistration()">Register!</button>

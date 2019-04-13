@@ -1,0 +1,14 @@
+.main-container{
+  background-color: rgba(52, 84, 57, 0.5);
+  border: 5px solid yellow;
+  padding: 30px;
+}
+.main-container-text{
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+.header-links-style{
+  padding : 5px 5px 5px 5px;
+  margin : 10px 10px 10px 10px;
+}
