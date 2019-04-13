@@ -13,7 +13,6 @@ export class RegistrationUserComponent implements OnInit {
 
   emailId:string = "";
   password:string = "";
-  
   fullName:string = "";
   address:string = "";
   selectedImage:File = null;
