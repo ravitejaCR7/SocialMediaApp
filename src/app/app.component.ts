@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-//import {} from '@angular/core/src/metadata/lifecycle_hooks';
+import { Router } from '@angular/router';
+
 import * as $ from 'jquery';
 @Component({
   selector: 'app-root',
@@ -8,7 +9,13 @@ import * as $ from 'jquery';
 })
 export class AppComponent implements OnInit {
   title = 'SocialMediaApp';
+
+  constructor( private router: Router )
+    {
+    }
+
   ngOnInit(){
+    this.router.navigate(['/login']);
     $('#btn').click(function(){
       alert('hello');
     });

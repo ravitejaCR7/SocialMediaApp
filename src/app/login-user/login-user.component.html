@@ -1,11 +1,21 @@
+<nav>
+    <a class = "header-links-style" routerLink = "/login" >Login</a>
+    <a class = "header-links-style" routerLink = "/testing">Testing</a>
+    <a class = "header-links-style" routerLink = "/register">Register</a>
+</nav>
+
+
+
 <div>
   <label for="loginemail">Email:</label>
-  <input type="text" id="loginemail" name="loginemail">
+  <input type="text" id="loginemail" name="loginemail" (keyup) = "loginInputForEmail($event)">
 </div>
 <div>
   <label for="loginpassword">Password:</label>
-  <input type="Password" id="loginpassword" name="loginpassword">
+  <input type="Password" id="loginpassword" name="loginpassword" (keyup) = "loginInputForPassword($event)">
 </div>
 <div>
-  <button id = 'submit'>login!</button>
+  <button (click) = "loginButtonClick()">login!</button>
+
 </div>
+<p *ngIf="errorFlag">{{errorMessage}}</p>

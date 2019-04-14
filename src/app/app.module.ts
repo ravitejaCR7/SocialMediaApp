@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { PrimaryKeyServiceService } from './primary-key-service.service';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PrimaryKeyServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
