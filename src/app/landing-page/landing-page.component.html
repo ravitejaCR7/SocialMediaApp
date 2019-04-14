@@ -1,3 +1,9 @@
-<p>
-  landing-page works! {{primaryKey}}
-</p>
+<nav>
+    <a class = "header-links-style" [routerLink] = "['./notifications']">notifications</a>
+    <a class = "header-links-style" [routerLink] = "['./search']">search</a>
+    <a class = "header-links-style" [routerLink] = "['./privacy']">privacy</a>
+    <a class = "header-links-style" [routerLink] = "['./post']" >post</a>
+    <a class = "header-links-style" [routerLink] = "['./viewaccount']">view account</a>
+    <a class = "header-links-style" [routerLink] = "['./messaging']">messaging</a>
+</nav>
+<router-outlet></router-outlet>
