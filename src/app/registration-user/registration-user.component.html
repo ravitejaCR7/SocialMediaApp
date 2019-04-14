@@ -21,7 +21,30 @@
 <input type="file" name="profilePic" accept="image/*" (change) = "onImageUpload($event)">
 <br/>
 <hr>
-
-
-
 <button type="submit" (click) = "validateRegistration()">Register!</button>
+<hr>
+<br>
+
+<form id="user_info" method="post" action="">
+	<div>
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" value="">
+	</div>
+  <div>
+    <label for="useremail">Email:</label>
+    <input type="text" id="useremail" name="useremail">
+  </div>
+	<div>
+		<label for="userpassword">Password:</label>
+		<input type="Password" id="userpassword" name="userpassword">
+	</div>
+  <div>
+    <label for="userconfirmpassword">Confirm Password:</label>
+    <input type="Password" id="userconfirmpassword" name="userconfirmpassword">
+  </div>
+
+	<div id="user_submit">
+		<button type="button" >Validate</button>
+	</div>
+
+</form>

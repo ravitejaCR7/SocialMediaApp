@@ -23,9 +23,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "../SocialMediaApp/node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "../SocialMediaApp/node_modules/jquery/dist/jquery.min.js",
+              "../SocialMediaApp/node_modules/popper.js/dist/popper.min.js",
+              "../SocialMediaApp/node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+            ]
           },
           "configurations": {
             "production": {
