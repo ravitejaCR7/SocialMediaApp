@@ -1,3 +1,16 @@
-<p>
-  privacy works!
-</p>
+<!-- Default unchecked -->
+<!-- Default checked -->
+<!-- <div class="custom-control custom-radio">
+  <input type="radio" class="custom-control-input" id="public" name="privacy-settings" checked>
+  <label class="custom-control-label" for="public">Public</label>
+</div> -->
+
+<div  *ngFor = "let privacy of privacyList">
+  <input
+  type = "radio"
+
+  name = "privacySettings"
+  value = "{{privacy}}"
+  (change) = "privacyChangedHandler($event)">
+  <p>{{privacy}}</p>
+  </div>
