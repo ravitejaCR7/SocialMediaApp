@@ -31,14 +31,14 @@ export class RegistrationUserComponent implements OnInit {
   	$("#username").focus(function(){
 
   		 $("#username + span").hide();
-  		$("#username").after("<span> InfoMessage </span>");
+  		$("#username").after("<span > InfoMessage </span>");
   		$("#username + span").addClass("info");
   	})
   	$("#username").focusout(function(){
   		if($("#username").val().length != 0){
   		if(/^[a-zA-Z0-9]+$/.test($("#username").val())){
   			$("#username + span").removeClass("info");
-  			$("#username + span").text("OK");
+  			$("#username + span").text("ok");
   				$("#username + span").addClass("ok");
   	}
   		else{
@@ -95,7 +95,7 @@ export class RegistrationUserComponent implements OnInit {
   $("#useremail").focus(function(){
 
   		$("#useremail+span").hide();
-  		$("#useremail").after("<span> email should be of the form xyz@abc.com </span>");
+  		$("#useremail").after("<span>  example@example.com </span>");
   		$("#useremail + span").addClass("info");
   	})
   	$("#useremail").focusout(function(){
