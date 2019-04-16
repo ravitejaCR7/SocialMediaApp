@@ -126,12 +126,12 @@ export class RegistrationUserComponent implements OnInit {
 
   registrationInputForEmail(event:any)
   {
-    this.password = event.target.value;
+    this.emailId = event.target.value;
   }
 
   registrationInputForPassword(event:any)
   {
-    this.emailId = event.target.value;
+    this.password = event.target.value;
   }
 
   onImageUpload(event:any)
@@ -161,13 +161,27 @@ export class RegistrationUserComponent implements OnInit {
     fd.append("personPic", this.selectedImage);
 
     let obs = this.http.post('http://localhost:3000/person/newUserCreation', fd);
-
-
     obs.subscribe((data:any) => {
       console.log(data);
       },
       (err:any) => {
           console.log(err);
       });
+
+
+    let obs1 = this.http.post('http://localhost:3000/person/privacySettingsCreate',
+    {
+      "email":this.emailId,
+      "privacy":"public"
+    }
+    );
+    obs1.subscribe((data:any) => {
+        console.log("successfully inserted the privacy settings ");
+      },
+      (err:any) => {
+        console.log("failed to insert the privacy settings ");
+      }
+      );
+
   }
 }

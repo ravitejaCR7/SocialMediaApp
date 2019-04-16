@@ -1,3 +1,3 @@
 <p>
-   {{userName}} <button (click)="profileLink()">View Profile</button>
+   {{userName}} <button [routerLink] = "['../friendAccount',userId]">View Profile</button>
 </p>

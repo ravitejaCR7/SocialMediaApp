@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { PrimaryKeyServiceService } from '../primary-key-service.service';
 
+
 @Component({
   selector: 'app-search-each-child',
   templateUrl: './search-each-child.component.html',
@@ -29,8 +30,8 @@ export class SearchEachChildComponent implements OnInit {
 
   }
 
-  profileLink()
+  linkClick()
   {
-    this.router.navigate(['friendAccount']);
+    this.router.navigate(['../friendAccount', this.userId]);
   }
 }

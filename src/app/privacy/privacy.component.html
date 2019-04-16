@@ -13,4 +13,6 @@
   value = "{{privacy}}"
   (change) = "privacyChangedHandler($event)">
   <p>{{privacy}}</p>
-  </div>
+</div>
+<button (click)="privacyChange()">Post</button>
+<p *ngIf="errorFlag">select at least one option or Error With Email</p>

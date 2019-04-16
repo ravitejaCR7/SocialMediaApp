@@ -6,6 +6,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { PrimaryKeyServiceService } from './primary-key-service.service';
+import { FriendPrimaryKeyService } from './friend-primary-key.service';
 
 
 
@@ -19,7 +20,7 @@ import { PrimaryKeyServiceService } from './primary-key-service.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [PrimaryKeyServiceService],
+  providers: [PrimaryKeyServiceService,FriendPrimaryKeyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

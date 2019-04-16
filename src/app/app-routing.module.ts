@@ -24,7 +24,7 @@ const routes: Routes = [
     {path: 'privacy',component:PrivacyComponent },
     {path: 'messaging',component:MessagingComponent },
     {path: 'viewaccount',component:ViewAccountComponent },
-    {path: 'friendAccount',component:FriendProfilePageComponent }
+    {path: 'friendAccount/:id',component:FriendProfilePageComponent }
   ]}
 
 ];

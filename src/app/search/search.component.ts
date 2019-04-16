@@ -53,7 +53,7 @@ export class SearchComponent implements OnInit {
               this.errorPresent = false;
               this.errorMessage = "";
             }
-            // console.log("array "+this.arrayOfIds);
+            console.log("array "+this.arrayOfIds);
           });
     }
   }
