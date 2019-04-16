@@ -1,0 +1,14 @@
+.background{
+  background-image: url("r4.jpg");
+}
+.form{
+  border: 2px;
+}
+.content{
+  padding: 100px;
+
+  color: white;
+}
+.row{
+  color: white;
+}

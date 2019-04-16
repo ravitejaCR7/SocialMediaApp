@@ -1,21 +1,32 @@
-<nav>
-    <a class = "header-links-style" routerLink = "/login" >Login</a>
-    <a class = "header-links-style" routerLink = "/testing">Testing</a>
-    <a class = "header-links-style" routerLink = "/register">Register</a>
-</nav>
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-secondary" routerLink = "/login">Login</button>
+  <button type="button" class="btn btn-secondary" routerLink = "/register">Register</button>
+</div>
 
 
-
-<div>
+<div class = "main">
+  <div class = "row">
+  <div class = "form-group col-md-4 offset-md-4">
+  <h2>Login</h2>
+  </div>
+  </div>
+<div class = "row">
+<div class = "form-group col-md-4 offset-md-4">
   <label for="loginemail">Email:</label>
-  <input type="text" id="loginemail" name="loginemail" (keyup) = "loginInputForEmail($event)">
+  <input type="text" class="form-control" id="loginemail" name="loginemail" (keyup) = "loginInputForEmail($event)">
 </div>
-<div>
+</div>
+<div class = "row">
+<div class = "form-group col-md-4 offset-md-4">
   <label for="loginpassword">Password:</label>
-  <input type="Password" id="loginpassword" name="loginpassword" (keyup) = "loginInputForPassword($event)">
+  <input type="Password" class="form-control" id="loginpassword" name="loginpassword" (keyup) = "loginInputForPassword($event)">
 </div>
-<div>
-  <button (click) = "loginButtonClick()">login!</button>
+</div>
+<div class = "row">
+<div class = "form-group col-md-4 offset-md-4">
+  <button class="btn btn-success" (click) = "loginButtonClick()">login!</button>
 
+</div>
+</div>
 </div>
 <p *ngIf="errorFlag">{{errorMessage}}</p>

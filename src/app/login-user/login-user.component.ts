@@ -38,6 +38,7 @@ export class LoginUserComponent implements OnInit {
     console.log(this.errorMessage);
     console.log("email : "+this.emailid);
     console.log("password : "+this.password);
+      this.router.navigate(['/landing']);
 
     let obs = this.http.get('http://localhost:3000/person/loginCheck/'+this.emailid+'/'+this.password);
     obs.subscribe((data:any) =>

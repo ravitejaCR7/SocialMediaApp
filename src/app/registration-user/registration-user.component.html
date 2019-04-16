@@ -1,12 +1,13 @@
-<nav>
-    <a class = "header-links-style" routerLink = "/login" >Login</a>
-    <a class = "header-links-style" routerLink = "/testing">Testing</a>
-    <a class = "header-links-style" routerLink = "/register">Register</a>
-</nav>
 
-<h1>Register</h1>
-<p>Please fill in this form to create an account.</p>
-<hr>
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-secondary" routerLink = "/login">Login</button>
+  <button type="button" class="btn btn-secondary" routerLink = "/register">Register</button>
+</div>
+<div class= "background" >
+<div class = "content">
+<!-- <h1>Register</h1> -->
+
+<!-- <hr>
 
 <label ><b>Full Name</b></label>
 <input type="text" placeholder="Enter full Name" name="firstName" (keyup) = "registrationInputForFullName($event)">
@@ -29,28 +30,60 @@
 <hr>
 <button type="submit" (click) = "validateRegistration()">Register!</button>
 <hr>
-<br>
+<br> -->
 
-<form id="user_info" method="post" action="">
-	<div>
+<!-- <form id="user_info" method="post" action=""> -->
+<div class = "row">
+  	<div class = "form-group col-md-4 offset-md-4">
+<h2>Registration</h2>
+</div>
+</div>
+  <div class = "row">
+	<div class = "form-group col-md-4 offset-md-4">
 		<label for="username">Username:</label>
-		<input type="text" id="username" name="username" value="">
+		<input  type="text" class="form-control" id="username" name="username"  (keyup) = "registrationInputForFullName($event)">
 	</div>
-  <div>
+  </div>
+  <div class = "row">
+	<div class = "form-group col-md-4 offset-md-4">
     <label for="useremail">Email:</label>
-    <input type="text" id="useremail" name="useremail">
+    <input type="text" class="form-control" id="useremail" name="useremail" (keyup) = "registrationInputForEmail($event)">
   </div>
-	<div>
+  </div>
+
+  <div class = "row">
+	<div class = "form-group col-md-4 offset-md-4">
 		<label for="userpassword">Password:</label>
-		<input type="Password" id="userpassword" name="userpassword">
+		<input type="Password" class="form-control" id="userpassword" name="userpassword" (keyup) = "registrationInputForPassword($event)">
 	</div>
-  <div>
+  </div>
+  <div class = "row">
+  <div class = "form-group col-md-4 offset-md-4">
     <label for="userconfirmpassword">Confirm Password:</label>
-    <input type="Password" id="userconfirmpassword" name="userconfirmpassword">
+    <input type="Password" class="form-control" id="userconfirmpassword" name="userconfirmpassword">
+  </div>
   </div>
 
-	<div id="user_submit">
-		<button type="button" >Validate</button>
-	</div>
 
-</form>
+  <div class = "row">
+	<div class = "form-group col-md-4 offset-md-4">
+    <label >Date of Birth</label>
+    <input type="date" class="form-control" placeholder="enter DOB" name="dob" required>
+  </div>
+  </div>
+  <div class = "row">
+	<div class = "form-group col-md-4 offset-md-4">
+    <label >Profile pic</label>
+    <input type="file" name="profilePic" accept="image/*" (change) = "onImageUpload($event)">
+  </div>
+  </div>
+  <div class = "row">
+	<div class = "form-group col-md-4 offset-md-4">
+  <div id="user_submit">
+		<button type="submit" class="btn btn-success" (click) = "validateRegistration()">Validate</button>
+	</div>
+  </div>
+  </div>
+  </div>
+</div>
+<!-- </form> -->

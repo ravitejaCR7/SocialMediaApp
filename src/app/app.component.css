@@ -1,14 +1,17 @@
-.main-container{
+/* .main-container{
   background-color: rgba(52, 84, 57, 0.5);
   border: 5px solid yellow;
   padding: 30px;
-}
+} */
 .main-container-text{
-  font-family: sans-serif;
+  background-color:#00c853;
+  font-family: 'Dancing Script', cursive;
+  font-size: 100px;
   font-style: italic;
+  text-align: center;
 }
 
-.header-links-style{
+/* .header-links-style{
   padding : 5px 5px 5px 5px;
   margin : 10px 10px 10px 10px;
-}
+} */
