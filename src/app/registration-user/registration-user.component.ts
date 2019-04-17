@@ -150,8 +150,6 @@ export class RegistrationUserComponent implements OnInit {
     console.log("pic "+this.selectedImage.name);
     console.log("errorFlag "+this.errorFlag);
 
-    //http://localhost:8080/restproject/webapi/products/newClientCreation/
-
     const fd = new FormData();
     fd.append("name", this.fullName);
     fd.append("address", "McCallum");

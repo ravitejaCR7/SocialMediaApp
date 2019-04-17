@@ -3,15 +3,10 @@
 </textarea>
 <br>
 <p>Do you want your post to be commented</p>
-<div>
-<input type="radio"  id="yes" name="isCommentable"  vlaue= "yes"  (change) = "isCommentable($event)">
-<p class="custom-control-label" for="yes">Yes</p>
-</div>
-<div>
-<input type="radio"  id="no" name="isCommentable"  value = "no" (change) = "isCommentable($event)">
-<p class="custom-control-label" for="no">No</p>
-</div>
+<input type="radio" value="yes" name="commentability" (change) = radioCommentType($event)> Yes
+<input type="radio" value="no" name="commentability" (change) = radioCommentType($event)> No
 
+<br/><br/>
 <input type="file" name="profilePic" accept="image/*|video/* " (change) = "onImageUpload($event)"><br><br>
 
 

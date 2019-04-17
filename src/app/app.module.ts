@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 
 import { PrimaryKeyServiceService } from './primary-key-service.service';
 import { FriendPrimaryKeyService } from './friend-primary-key.service';
+import { MyProfileEachPostComponent } from './my-profile-each-post/my-profile-each-post.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    MyProfileEachPostComponent
   ],
   imports: [
     BrowserModule,

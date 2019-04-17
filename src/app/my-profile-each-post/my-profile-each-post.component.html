@@ -1,0 +1,15 @@
+<div>
+  <p>DatePosted : {{datePosted}}</p>
+  <h4>{{postTexted}}</h4>
+  <div *ngIf="imageFlag">
+    <img  src={{imgOrVid}} width="500px" height="300px"/>
+  </div>
+  <div *ngIf="videoFlag" width="500px" height="300px">
+    <video  controls id="videoPlayer">
+      <source src="{{videoSource}}" type="video/mp4" />
+    </video>
+  </div>
+
+
+</div>
+<br/>
