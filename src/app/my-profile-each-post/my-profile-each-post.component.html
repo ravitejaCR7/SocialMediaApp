@@ -5,11 +5,16 @@
     <img  src={{imgOrVid}} width="500px" height="300px"/>
   </div>
   <div *ngIf="videoFlag" width="500px" height="300px">
-    <video  controls id="videoPlayer">
-      <source src="{{videoSource}}" type="video/mp4" />
+    <video  controls id="videoPlayer" width="500px" height="300px">
+      <source src="{{videoSource}}" type="video/mp4" width="500px" height="300px"/>
     </video>
   </div>
-
-
+    <button (click)="openComments()">Comments</button>
+    <div *ngIf = "showCommentsFlag">
+      <input type="text" id="commentText" name="commentText" (keyup) = "onCommentTextEntered($event)">
+      <input type="file" name="commentPic" accept="image/*|video/* " (change) = "onImageUpload($event)">
+      <button (click)="postNewComment()">Comment!</button>
+      <app-each-comment-of-posts *ngFor="let eachCommentId of commentIdArray" [eachCommentId]="eachCommentId"></app-each-comment-of-posts>
+    </div>
 </div>
 <br/>
