@@ -22,7 +22,7 @@ export class MyProfilePageComponent implements OnInit {
 
   ngOnInit() {
     this.userPrimaryKey = this.primaryKeyService.getPrimaryKey();
-    console.log("key in my profile : "+this.userPrimaryKey);
+    console.log('key in my profile : '+this.userPrimaryKey);
 
     let obs = this.http.get('http://localhost:3000/person/userInfo/'+this.userPrimaryKey);
     obs.subscribe((data:any) =>

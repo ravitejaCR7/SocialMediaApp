@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {PrimaryKeyServiceService} from '../primary-key-service.service';
 
 @Component({
   selector: 'app-friend-profile-page',
@@ -8,11 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FriendProfilePageComponent implements OnInit {
 
-  constructor( private route: ActivatedRoute ) { }
+  constructor( private route: ActivatedRoute,  private router: Router , private primaryKeyService: PrimaryKeyServiceService) { }
 
   ngOnInit() {
     let friendEmailId = this.route.snapshot.paramMap.get('id');
-    console.log("asdasd : "+friendEmailId);
+    console.log('asdasd : ' + friendEmailId);
+    if (this.primaryKeyService.getEmailId() === friendEmailId) {
+      this.router.navigate(['/myProfilePage']);
+    }
   }
 
+  addFriend() {
+
+  }
 }

@@ -36,28 +36,25 @@ export class LoginUserComponent implements OnInit {
   {
     this.errorFlag = false;
     console.log(this.errorMessage);
-    console.log("email : "+this.emailid);
-    console.log("password : "+this.password);
+    console.log('email : ' + this.emailid);
+    console.log('password : ' + this.password);
 
-    let obs = this.http.get('http://localhost:3000/person/loginCheck/'+this.emailid+'/'+this.password);
-    obs.subscribe((data:any) =>
-        {
-          console.log("login error response : "+data.error);
-          if(data.error == false)
-          {
-            //no error
-            console.log("login id : "+data.userModel._id);
+    let obs = this.http.get('http://localhost:3000/person/loginCheck/' + this.emailid + '/' + this.password);
+    obs.subscribe((data: any) => {
+          console.log('login error response : ' + data.error);
+          if(data.error == false) {
+            // no error
+            console.log('login id : ' + data.userModel._id);
             this.errorFlag = false;
             this.primaryKeyService.setPrimaryKey(data.userModel._id);
+            this.primaryKeyService.setEmailId(data.userModel.email);
 
-            console.log("login id issss: "+this.primaryKeyService.getPrimaryKey());
+            console.log('login id issss: ' + this.primaryKeyService.getPrimaryKey());
             this.router.navigate(['/landing']);
-          }
-          else
-          {
-            //Invalid login
+          } else {
+            // Invalid login
             this.errorFlag = true;
-            this.errorMessage = "Invalid login credentials"
+            this.errorMessage = 'Invalid login credentials'
           }
         });
   }
