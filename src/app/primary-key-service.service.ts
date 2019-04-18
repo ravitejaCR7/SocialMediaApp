@@ -5,18 +5,25 @@ import { Injectable } from '@angular/core';
 })
 export class PrimaryKeyServiceService {
 
-  userPrimaryKey:string = "";
+  userPrimaryKey: string = '';
+  emailId: string = '';
 
   constructor() { }
 
-  setPrimaryKey(value:string)
-  {
+  setPrimaryKey(value: string) {
     this.userPrimaryKey = value;
   }
 
-  getPrimaryKey()
-  {
+  getPrimaryKey() {
     return this.userPrimaryKey;
+  }
+
+  setEmailId(value: string) {
+    this.emailId = value;
+  }
+
+  getEmailId() {
+    return this.emailId;
   }
 
 }

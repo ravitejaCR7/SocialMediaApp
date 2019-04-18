@@ -1,0 +1,12 @@
+<div>
+  <p>{{postTexted}}</p>
+  <div *ngIf="imageFlag">
+    <img  src={{imgOrVid}} width="100px" height="150px"/>
+  </div>
+  <div *ngIf="videoFlag" width="100px" height="150px">
+    <video  controls id="videoPlayer" width="100px" height="150px">
+      <source src="{{videoSource}}" type="video/mp4" />
+    </video>
+  </div>
+</div>
+<br/>
