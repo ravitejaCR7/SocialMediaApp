@@ -13,18 +13,17 @@ export class SearchEachChildComponent implements OnInit {
 
   @Input() userId:string;
 
-  userName:string = "";
+  userName: string = '';
 
   constructor(private http: HttpClient , private router: Router, private primaryKeyService: PrimaryKeyServiceService) { }
 
   ngOnInit() {
 
-    let obs = this.http.get('http://localhost:3000/person/specificUserInfo/'+this.userId);
-    obs.subscribe((data:any) =>
-        {
+    let obs = this.http.get('http://localhost:3000/person/specificUserInfo/' + this.userId);
+    obs.subscribe((data: any) => {
 
           // console.log("search child response : "+data.userModel.map(a => a._id));
-          console.log("search child response : "+data);
+          console.log('search child response : ' + data);
           this.userName = data.userModel.name;
         });
 
