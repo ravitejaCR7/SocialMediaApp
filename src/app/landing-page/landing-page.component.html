@@ -1,10 +1,23 @@
-<nav>
-    <a class = "header-links-style" [routerLink] = "['./notifications']">notifications</a>
-    <a class = "header-links-style" [routerLink] = "['./search']">search</a>
-    <a class = "header-links-style" [routerLink] = "['./privacy']">privacy</a>
-    <a class = "header-links-style" [routerLink] = "['./post']" >post</a>
-    <a class = "header-links-style" [routerLink] = "['./viewaccount']">view account</a>
-    <a class = "header-links-style" [routerLink] = "['./messaging']">messaging</a>
-    <a class = "header-links-style" [routerLink] = "['./myProfilePage']">My Profile</a>
-</nav>
+<div class="scrollmenu">
+<div class = "main-container">
+  <div class="row">
+  <img class = "logo" src="http://localhost:3000/uploads/logo.png" alt="logo">
+  <nav class="main-nav">
+
+    <ul class="header-links">
+      <li><a class = "header-links-style" [routerLink] = "['./myProfilePage']">My Profile</a></li>
+      <li><a class = "header-links-style" [routerLink] = "['./search']">Search</a></li>
+      <li><a class = "header-links-style" [routerLink] = "['./post']" >Post</a></li>
+      <li><a class = "header-links-style" [routerLink] = "['./viewaccount']">View Account</a></li>
+      <li><a class = "header-links-style" [routerLink] = "['./privacy']">Privacy</a></li>
+      <li><a class = "header-links-style" [routerLink] = "['./messaging']">Message</a></li>
+      <li><a class = "header-links-style" [routerLink] = "['./notifications']">Notifications</a></li>
+
+      <li><a class="header-links-style" routerLink="/login">Logout</a></li>
+  </ul>
+
+  </nav>
+</div>
+</div>
+</div>
 <router-outlet></router-outlet>

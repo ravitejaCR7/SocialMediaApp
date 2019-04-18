@@ -1,14 +1,19 @@
+.logo{
+  height: 100px;
+  width: auto;
+}
 .main {
     position: relative;
-    min-width: 1500px;
+    min-width: 100%;
     min-height: 650px;
 }
 
 .main{
-  background-image: url("regist.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("r1.jpg");
     background-repeat: no-repeat;
-    background-size: 1500px 650px;
+    background-size: 100% 650px;
 }
+
 .form{
   border: 2px;
 }
@@ -17,8 +22,7 @@
 
   color: white;
 }
-.row,
-.row1{
+.row{
   color: white;
 }
 .form-group{
@@ -30,53 +34,88 @@ footer {
     font-size: 80%;
 }
 
+.footer-content{
+    color: #888;
+    text-align: center;
+    margin-top: 10px;
+}
+
 .footer-nav {
     list-style: none;
     float: left;
 }
-
-.social-links {
-    list-style: none;
-    float: right;
-}
-
-.footer-nav li,
-.social-links li {
+.footer-nav li {
     display: inline-block;
     margin-right: 20px;
 }
-
-.footer-nav li:last-child,
-.social-links li:last-child {
-    margin-right: 0;
-}
-
 .footer-nav li a:link,
-.footer-nav li a:visited,
-.social-links li a:link,
-.social-links li a:visited {
+.footer-nav li a:visited{
     text-decoration: none;
     border: 0;
     color: #888;
-    -webkit-transition: color 0.2s;
     transition: color 0.2s;
 }
 
 .footer-nav li a:hover,
 .footer-nav li a:active {
+    color: #fff;
+}
+
+
+
+/* .main-container{
+  background-color: rgba(52, 84, 57, 0.5);
+  border: 5px solid yellow;
+  padding: 30px;
+} */
+
+
+.main-container{
+    background-attachment: fixed;
+    height: 10vh;
+    background-color: #333;
+}
+.row2{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn1{
+    float: right;
+    margin:1.5% 3% 0 0;
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    top:0;
+    right: 0;
+    color:#fff;
+}
+
+.btn1 li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+.btn1 li a:link,
+.btn1 li a:visited{
+    text-decoration: none;
+    border: 0;
+    color: #aaa;
+    transition: color 0.2s;
+}
+
+.btn1 li a:hover,
+.footer-nav li a:active {
     color: #ddd;
 }
 
-.social-links li a:link,
-.social-links li a:visited {
-    font-size: 160%;
+.main-container-text{
+  padding-top: 15px;
+  color: #ccc;
 }
 
-footer p {
-    color: #888;
-    text-align: center;
-    margin-top: 10px;
-}
-.content{
-  padding-top: 150px;
-}
+/* .header-links-style{
+  padding : 5px 5px 5px 5px;
+  margin : 10px 10px 10px 10px;
+} */

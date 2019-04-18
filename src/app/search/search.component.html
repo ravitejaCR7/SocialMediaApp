@@ -1,6 +1,13 @@
-  <input type="text" placeholder="Search for a user.." (keyup)="searchForThisUsers($event)">
-
-  <p *ngIf="errorPresent">{{errorMessage}}</p>
 
 
-  <app-search-each-child  *ngFor="let userids of arrayOfIds" [userId]="userids"></app-search-each-child>
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+    <input id="search-box" type="text" placeholder="Search for a user.." (keyup)="searchForThisUsers($event)">
+  </div>
+
+    <p *ngIf="errorPresent">{{errorMessage}}</p>
+
+<div class="names col-md-4 offset-md-4">
+    <app-search-each-child  *ngFor="let userids of arrayOfIds" [userId]="userids"></app-search-each-child>
+</div>
+</div>
