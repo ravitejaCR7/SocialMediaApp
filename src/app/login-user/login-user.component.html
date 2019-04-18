@@ -1,32 +1,57 @@
-<div class="btn-group" role="group">
-  <button type="button" class="btn btn-secondary" routerLink = "/login">Login</button>
-  <button type="button" class="btn btn-secondary" routerLink = "/register">Register</button>
-</div>
-
-
+<section>
 <div class = "main">
+  <div class="content">
   <div class = "row">
-  <div class = "form-group col-md-4 offset-md-4">
+  <div class = "form-group col-md-3 offset-md-3">
   <h2>Login</h2>
   </div>
   </div>
 <div class = "row">
-<div class = "form-group col-md-4 offset-md-4">
+<div class = "form-group col-md-2 offset-md-3">
   <label for="loginemail">Email:</label>
+  </div>
+  <div class = "form-group col-md-3">
   <input type="text" class="form-control" id="loginemail" name="loginemail" (keyup) = "loginInputForEmail($event)">
 </div>
 </div>
 <div class = "row">
-<div class = "form-group col-md-4 offset-md-4">
+<div class = "form-group col-md-2 offset-md-3">
   <label for="loginpassword">Password:</label>
+</div>
+<div class = "form-group col-md-3">
   <input type="Password" class="form-control" id="loginpassword" name="loginpassword" (keyup) = "loginInputForPassword($event)">
 </div>
 </div>
 <div class = "row">
-<div class = "form-group col-md-4 offset-md-4">
-  <button class="btn btn-success" (click) = "loginButtonClick()">login!</button>
+<div class = "form-group col-md-3 offset-md-3">
+  <button class="btn btn-success" (click) = "loginButtonClick()">Login</button>
 
 </div>
 </div>
 </div>
+</div>
+
+</section>
+
+<footer>
+    <div class="row">
+        <div class="col span-1-of-2">
+            <ul class="footer-nav">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">iOS App</a></li>
+                <li><a href="#">Android App</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="row">
+        <p>
+            This webpage was created for the course Web Programming Languages by Timothy Panda.
+            This webpage is for you! So go and do whatever you want with it and have fun.
+        </p>
+
+    </div>
+</footer>
 <p *ngIf="errorFlag">{{errorMessage}}</p>

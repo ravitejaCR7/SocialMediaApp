@@ -1,89 +1,93 @@
-
-<div class="btn-group" role="group">
-  <button type="button" class="btn btn-secondary" routerLink = "/login">Login</button>
-  <button type="button" class="btn btn-secondary" routerLink = "/register">Register</button>
-</div>
+<section>
 <div class= "background" >
 <div class = "content">
-<!-- <h1>Register</h1> -->
 
-<!-- <hr>
-
-<label ><b>Full Name</b></label>
-<input type="text" placeholder="Enter full Name" name="firstName" (keyup) = "registrationInputForFullName($event)">
-<br/>
-<label ><b>Email</b></label>
-<input type="text" placeholder="Enter Email" name="email" (keyup) = "registrationInputForEmail($event)">
-<br/>
-<label ><b>Password</b></label>
-<input type="password" placeholder="Enter Password" name="psw" (keyup) = "registrationInputForPassword($event)">
-<br/>
-<label ><b>Confirm Password</b></label>
-<input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-<br/>
-<label ><b>DOB</b></label>
-<input type="date" placeholder="enter DOB" name="dob" required>
-<br/>
-<label ><b>profile pic</b></label>
-<input type="file" name="profilePic" accept="image/*" (change) = "onImageUpload($event)">
-<br/>
-<hr>
-<button type="submit" (click) = "validateRegistration()">Register!</button>
-<hr>
-<br> -->
-
-<!-- <form id="user_info" method="post" action=""> -->
 <div class = "row">
-  	<div class = "form-group col-md-4 offset-md-4">
-<h2>Registration</h2>
+  	<div class = "form-group col-md-5 offset-md-3">
+<h2>Create a New Account</h2>
 </div>
 </div>
   <div class = "row">
-	<div class = "form-group col-md-4 offset-md-4">
+	<div class = "form-group col-md-2 offset-md-3">
 		<label for="username">Username:</label>
-		<input  type="text" class="form-control" id="username" name="username"  (keyup) = "registrationInputForFullName($event)">
+    </div>
+	<div class = "form-group col-md-3">
+        <input  type="text" class="form-control" id="username" name="username"  (keyup) = "registrationInputForFullName($event)">
 	</div>
   </div>
   <div class = "row">
-	<div class = "form-group col-md-4 offset-md-4">
+	<div class = "form-group col-md-2 offset-md-3">
     <label for="useremail">Email:</label>
+         </div>
+	<div class = "form-group col-md-3">
     <input type="text" class="form-control" id="useremail" name="useremail" (keyup) = "registrationInputForEmail($event)">
   </div>
   </div>
 
   <div class = "row">
-	<div class = "form-group col-md-4 offset-md-4">
+	<div class = "form-group col-md-2 offset-md-3">
 		<label for="userpassword">Password:</label>
+         </div>
+	<div class = "form-group col-md-3">
 		<input type="Password" class="form-control" id="userpassword" name="userpassword" (keyup) = "registrationInputForPassword($event)">
 	</div>
   </div>
   <div class = "row">
-  <div class = "form-group col-md-4 offset-md-4">
+  <div class = "form-group col-md-2 offset-md-3">
     <label for="userconfirmpassword">Confirm Password:</label>
+       </div>
+	<div class = "form-group col-md-3">
     <input type="Password" class="form-control" id="userconfirmpassword" name="userconfirmpassword">
   </div>
   </div>
 
 
   <div class = "row">
-	<div class = "form-group col-md-4 offset-md-4">
+	<div class = "form-group col-md-2 offset-md-3">
     <label >Date of Birth</label>
-    <input type="date" class="form-control" placeholder="enter DOB" name="dob" required>
+         </div>
+	<div class = "form-group col-md-3">
+    <input type="date" class="form-control" placeholder="Enter DOB" name="dob" required>
   </div>
   </div>
   <div class = "row">
-	<div class = "form-group col-md-4 offset-md-4">
+	<div class = "form-group col-md-2 offset-md-3">
     <label >Profile pic</label>
+         </div>
+	<div class = "form-group col-md-3">
     <input type="file" name="profilePic" accept="image/*" (change) = "onImageUpload($event)">
   </div>
   </div>
   <div class = "row">
-	<div class = "form-group col-md-4 offset-md-4">
+	<div class = "form-group col-md-3 offset-md-3">
   <div id="user_submit">
-		<button type="submit" class="btn btn-success" (click) = "validateRegistration()">Validate</button>
+		<button type="submit" class="btn btn-success" (click) = "validateRegistration()">Sign Up</button>
 	</div>
   </div>
   </div>
   </div>
 </div>
+</section>
+
+<footer>
+    <div class="row">
+        <div class="col span-1-of-2">
+            <ul class="footer-nav">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">iOS App</a></li>
+                <li><a href="#">Android App</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="row">
+        <p>
+            This webpage was created for the course Web Programming Languages by Timothy Panda.
+            This webpage is for you! So go and do whatever you want with it and have fun.
+        </p>
+
+    </div>
+</footer>
 <!-- </form> -->
