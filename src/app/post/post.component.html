@@ -1,15 +1,26 @@
-<textarea rows="4" cols="50" placeholder = "enter text" (keyup) = "posttext($event)" >
-
+<div class="row">
+<div class="form-group col-md-4 offset-md-3">
+<textarea class="form-control" rows="4" cols="50" placeholder = "enter text" (keyup) = "posttext($event)" >
 </textarea>
+</div>
+</div>
 <br>
+<div class = "row">
+  <div class = "form-group col-md-4 offset-md-3">
 <p>Do you want your post to be commented</p>
 <input type="radio" value="yes" name="commentability" (change) = radioCommentType($event)> Yes
 <input type="radio" value="no" name="commentability" (change) = radioCommentType($event)> No
-
+</div>
+</div>
 <br/><br/>
 <input type="file" name="profilePic" accept="image/*|video/* " (change) = "onImageUpload($event)"><br><br>
 
-
-
-
 <button type = "submit" (click) = "postcontent()">Post</button>
+
+
+
+
+<div class="form-group">
+  <label for="comment">Comment:</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
