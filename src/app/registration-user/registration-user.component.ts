@@ -161,25 +161,41 @@ export class RegistrationUserComponent implements OnInit {
     let obs = this.http.post('http://localhost:3000/person/newUserCreation', fd);
     obs.subscribe((data:any) => {
       console.log(data);
+
+      let obs1 = this.http.post('http://localhost:3000/person/privacySettingsCreate',
+      {
+        "email":this.emailId,
+        "privacy":"public"
+      }
+      );
+      obs1.subscribe((data:any) => {
+          console.log("successfully inserted the privacy settings ");
+
+
+
+          let obs2 = this.http.get('http://localhost:3000/person/addFriendFirstTime/'+this.emailId);
+          obs2.subscribe((data:any) => {
+              console.log("successfully inserted the friends table ");
+            },
+            (err:any) => {
+              console.log("failed to insert the privacy settings ");
+            }
+            );
+
+
+
+        },
+        (err:any) => {
+          console.log("failed to insert the privacy settings ");
+        }
+        );
+
       },
       (err:any) => {
           console.log(err);
       });
 
 
-    let obs1 = this.http.post('http://localhost:3000/person/privacySettingsCreate',
-    {
-      "email":this.emailId,
-      "privacy":"public"
-    }
-    );
-    obs1.subscribe((data:any) => {
-        console.log("successfully inserted the privacy settings ");
-      },
-      (err:any) => {
-        console.log("failed to insert the privacy settings ");
-      }
-      );
 
   }
 }
