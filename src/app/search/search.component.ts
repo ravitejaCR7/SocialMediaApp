@@ -31,8 +31,7 @@ export class SearchComponent implements OnInit {
   {
     this.searchName = event.target.value;
 
-    if(this.searchName.length > 0)
-    {
+    if (this.searchName.length > 0) {
       console.log(this.searchName);
       let obs = this.http.get('http://localhost:3000/person/searchName/'+this.searchName);
       obs.subscribe((data:any) =>

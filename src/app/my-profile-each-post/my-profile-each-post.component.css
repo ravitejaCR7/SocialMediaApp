@@ -1,0 +1,11 @@
+.round{
+  border-radius: 100%;
+   /* width: 200px; */
+}
+.size{
+  width:550px;
+}
+.division{
+   /* background: rgba(0, 0, 0, 0.5); */
+   background-color: white;
+}

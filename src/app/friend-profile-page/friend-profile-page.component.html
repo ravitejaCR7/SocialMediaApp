@@ -1,1 +1,14 @@
-<button (click)="addFriend()">Add friend</button>
+
+
+<div>
+  <img src="{{ friendProfilePicture }}" class="rounded-circle" />
+  <h3>{{ friendName }}</h3>
+</div>
+
+<div *ngIf="!isFriend">
+  <app-friend-profile-request></app-friend-profile-request>
+</div>
+
+
+
+
