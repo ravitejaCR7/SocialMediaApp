@@ -9,7 +9,8 @@ import { PrimaryKeyServiceService } from './primary-key-service.service';
 import { FriendPrimaryKeyService } from './friend-primary-key.service';
 import { MyProfileEachPostComponent } from './my-profile-each-post/my-profile-each-post.component';
 import { EachCommentOfPostsComponent } from './each-comment-of-posts/each-comment-of-posts.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
+import { FriendProfileRequestComponent } from './friend-profile-request/friend-profile-request.component';
 
 
 
@@ -19,7 +20,8 @@ import {FormsModule} from "@angular/forms";
     AppComponent,
     routingComponents,
     MyProfileEachPostComponent,
-    EachCommentOfPostsComponent
+    EachCommentOfPostsComponent,
+    FriendProfileRequestComponent
   ],
   imports: [
     BrowserModule,

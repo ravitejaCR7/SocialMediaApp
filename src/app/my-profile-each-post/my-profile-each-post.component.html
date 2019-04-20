@@ -1,20 +1,55 @@
-<div>
-  <p>DatePosted : {{datePosted}}</p>
-  <h4>{{postTexted}}</h4>
+<div class="row main">
+  <div class="col-md-4 offset-md-3 ">
+<div  class = "size"style = " background-color: white;border: 3px; border-style: outset;  ">
+  <small>DatePosted : {{datePosted}}</small>
+  <h3 style = " color:#1A237E">{{postTexted}}</h3>
+
   <div *ngIf="imageFlag">
-    <img  src={{imgOrVid}} width="500px" height="300px"/>
+    <div class="card" style="width: 500px">
+    <img   class="img-responsive" src={{imgOrVid}}  class="img-thumbnail" width="500" height="500">
+    <!-- <div class="card-body">
+      <h4 class="card-text">{{postTexted}}</h4>
+    </div> -->
+    </div>
   </div>
   <div *ngIf="videoFlag" width="500px" height="300px">
     <video  controls id="videoPlayer" width="500px" height="300px">
       <source src="{{videoSource}}" type="video/mp4" width="500px" height="300px"/>
     </video>
   </div>
-    <button (click)="openComments()">Comments</button>
+  <br>
+    <button type="button"class="btn btn-secondary btn-sm"   (click)="openComments()">Comments</button>
     <div *ngIf = "showCommentsFlag">
-      <input type="text" id="commentText" name="commentText" (keyup) = "onCommentTextEntered($event)">
-      <input type="file" name="commentPic" accept="image/*|video/* " (change) = "onImageUpload($event)">
-      <button (click)="postNewComment()">Comment!</button>
+      <br>
+      <div class = "row">
+    	<div class = "form-group col-md-4 ">
+      <input type="text" class="form-control round" id="commentText" name="commentText"   placeholder = " write a comment..."(keyup) = "onCommentTextEntered($event)">
+      </div>
+      <div class = "form-group col-md-1 ">
+      <input type="file" name ="commentPic" accept="image/*|video/* " (change) = "onImageUpload($event)"><br>
+    </div>
+    </div>
+      <button  type="button" class="btn btn-secondary btn-sm" (click)="postNewComment()" >Comment!</button>
+      <br>
       <app-each-comment-of-posts *ngFor="let eachCommentId of commentIdArray" [eachCommentId]="eachCommentId"></app-each-comment-of-posts>
     </div>
 </div>
+</div>
+</div>
 <br/>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div> -->

@@ -57,7 +57,7 @@ export class MyProfileEachPostComponent implements OnInit {
           this.postTexted = data.userModel.textEntered;
           if( data.userModel.postImageOrVideo != null )
           {
-            if(data.userModel.postImageOrVideo.endsWith(".JPG") || data.userModel.postImageOrVideo.endsWith(".jpg") || data.userModel.postImageOrVideo.endsWith(".png"))
+            if(data.userModel.postImageOrVideo.endsWith(".JPG") || data.userModel.postImageOrVideo.endsWith(".jpg") || data.userModel.postImageOrVideo.endsWith(".png") || data.userModel.postImageOrVideo.endsWith(".PNG"))
             {
               console.log("Image ...");
               this.imageFlag = true;

@@ -10,15 +10,15 @@ import * as $ from 'jquery';
 })
 export class RegistrationUserComponent implements OnInit {
 
-  errorMessage = '';
+  errorMessage: string = "";
 
-  emailId = '';
-  password = '';
-  fullName = '';
-  address = '';
-  selectedImage: File = null;
+  emailId:string = "";
+  password:string = "";
+  fullName:string = "";
+  address:string = "";
+  selectedImage:File = null;
 
-  errorFlag = false;
+  errorFlag: boolean = false;
 
   constructor(private http: HttpClient , private router: Router) {
   }
@@ -140,9 +140,9 @@ export class RegistrationUserComponent implements OnInit {
   			$('#useremail + span').text('Error');
   				$('#useremail + span').addClass('error');
   		}
-  	} else {
-  		$('#useremail+span').hide();
-    }
+  	}
+  	else
+  		$("#useremail+span").hide();
 
   	});
   });
@@ -185,29 +185,41 @@ export class RegistrationUserComponent implements OnInit {
     fd.append('password', this.password);
     fd.append('personPic', this.selectedImage);
 
-    const obs = this.http.post('http://localhost:3000/person/newUserCreation', fd);
-    obs.subscribe((data: any) => {
-      console.log(data);
+    let obs = this.http.post('http://localhost:3000/person/newUserCreation', fd);
+    obs.subscribe((data:any) => {
+        console.log(data);
+
+        let obs1 = this.http.post('http://localhost:3000/person/privacySettingsCreate',
+          {
+            "email":this.emailId,
+            "privacy":"public"
+          }
+        );
+        obs1.subscribe((data:any) => {
+            console.log("successfully inserted the privacy settings ");
+
+
+
+            let obs2 = this.http.get('http://localhost:3000/person/addFriendFirstTime/'+this.emailId);
+            obs2.subscribe((data:any) => {
+                console.log("successfully inserted the friends table ");
+              },
+              (err:any) => {
+                console.log("failed to insert the privacy settings ");
+              }
+            );
+
+
+
+          },
+          (err:any) => {
+            console.log("failed to insert the privacy settings ");
+          }
+        );
+
       },
-      (err: any) => {
-          console.log(err);
+      (err:any) => {
+        console.log(err);
       });
-
-
-    const obs1 = this.http.post('http://localhost:3000/person/privacySettingsCreate',
-    {
-      'email': this.emailId,
-      'privacy': 'public'
-    }
-    );
-    obs1.subscribe((data: any) => {
-        console.log('successfully inserted the privacy settings ');
-      },
-      (err: any) => {
-        console.log('failed to insert the privacy settings ');
-      }
-      );
-
   }
-
 }
