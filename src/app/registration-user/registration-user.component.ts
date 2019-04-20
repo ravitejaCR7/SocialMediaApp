@@ -26,45 +26,6 @@ export class RegistrationUserComponent implements OnInit {
   ngOnInit() {
     this.errorFlag = false;
 
-<<<<<<< HEAD
-  $(document).ready(function() {
-  	$("#username").focus(function(){
-
-  		 $("#username + span").hide();
-  		$("#username + span").addClass("info");
-  	})
-  	$("#username").focusout(function(){
-  		if($("#username").val().length != 0){
-  		if(/^[a-zA-Z0-9]+$/.test($("#username").val())){
-  			$("#username + span").removeClass("info");
-  			$("#username + span").html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-  				$("#username + span").addClass("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-  	}
-  		else{
-  			$("#username +span").text("Invalid Username");
-  				$("#username +span").addClass("error");
-  		}
-  	}
-  	else
-  		$("#username + span").hide();
-  	})
-  	$("#userpassword").focus(function(){
-
-  		$("#userpassword+span").hide();
-  		$("#userpassword").after("<span></span>");
-  		$("#userpassword + span").addClass("info");
-  	})
-  	$("#userpassword").focusout(function(){
-  		if($("#userpassword").val().length != 0){
-  		if(($("#userpassword").val().length > 7)){
-  			$("#userpassword + span").removeClass("info");
-  			$("#userpassword + span").html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-  				$("#userpassword + span").addClass("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-  	}
-  		else{
-  			$("#userpassword + span").text("Error");
-  				$("#userpassword + span").addClass("error");
-=======
     function strongPasswordCheck(input: any) {
       let alphaNumCheck = false, lowercaseCheck = false, uppercaseCheck = false, numberCheck = false;
 
@@ -82,16 +43,16 @@ export class RegistrationUserComponent implements OnInit {
 
       let result = '';
       if (!alphaNumCheck) {
-        result += '<strong>atleast 1 alphanumeric charcter should be present</strong><br/>';
+        result += '<strong>Must contain a alphanumeric charcter</strong><br/>';
       }
       if (!numberCheck) {
-        result += '<strong>atleast 1 number  should be present</strong><br/>';
+        result += '<strong>Must contain a number</strong><br/>';
       }
       if (!lowercaseCheck) {
-        result += '<strong>atleast 1 lower case letter should be present</strong><br/>';
+        result += '<strong>Must contain a lower case charcter</strong><br/>';
       }
       if (!uppercaseCheck) {
-        result  += '<strong>atleast 1 uppper case letter should be present</strong><br/>';
+        result  += '<strong>Must contain a upper case charcter</strong><br/>';
       }
       return result;
     }
@@ -99,14 +60,13 @@ export class RegistrationUserComponent implements OnInit {
     $(document).ready(function() {
   	$('#username').focus(function() {
   		 $('#username + span').hide();
-  		 $('#username').after('<span > InfoMessage </span>');
   		 $('#username + span').addClass('info');
   	});
   	$('#username').focusout(function() {
   		if ($('#username').val().length != 0) {
   		if (/^[a-zA-Z0-9]+$/.test($('#username').val())) {
   			$('#username + span').removeClass('info');
-  			$('#username + span').text('ok');
+  			$('#username + span').html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
   				$('#username + span').addClass('ok');
   	} else {
   			$('#username +span').text('Error');
@@ -119,7 +79,7 @@ export class RegistrationUserComponent implements OnInit {
   	$('#userpassword').focus(function() {
 
   		$('#userpassword+span').hide();
-  		$('#userpassword').after('<span> InfoMessage </span>');
+  		$('#userpassword').after('<span>  </span>');
   		$('#userpassword + span').addClass('info');
   	});
   	$('#userpassword').focusout(function() {
@@ -128,43 +88,23 @@ export class RegistrationUserComponent implements OnInit {
   		  const error = strongPasswordCheck($('#userpassword').val());
   		  if(error.length == 0) {
           $('#userpassword + span').removeClass('info');
-          $('#userpassword + span').text('OK');
+          $('#userpassword + span').html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
           $('#userpassword + span').addClass('ok');
         } else {
           $('#userpassword + span').html(error);
         }
 
   	} else {
-  			$('#userpassword + span').text('Password Should be atleast 8 characters');
+  			$('#userpassword + span').text('Should be atleast 8 characters');
   			$('#userpassword + span').addClass('error');
->>>>>>> 4a16b89b1ce7dffdd3cd8e5af56c2c3bef887cdb
   		}
   	} else {
   		$('#userpassword+span').hide();
     }
   	});
-<<<<<<< HEAD
-    $("#userconfirmpassword").focus(function(){
-      $("#userconfirmpassword + span").hide();
-      $("#userconfirmpassword").after("<span>This should match with password</span>")
-      $("#userconfirmpassword + span").addClass("info");
-    })
-    $("#userconfirmpassword").focusout(function(){
-      if($("#userconfirmpassword").val().length !=0){
-        if(($("#userpassword").val().length > 7)){
-        if($("#userpassword").val() == $("#userconfirmpassword").val()){
-          $("#userconfirmpassword + span").removeClass("info");
-    			$("#userconfirmpassword + span").html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-    			$("#userconfirmpassword + span").addClass("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-        }
-      }
-        else{
-    			$("#userconfirmpassword + span").text("Passwords donot match");
-    			$("#userconfirmpassword + span").addClass("error");
-=======
     $('#userconfirmpassword').focus(function() {
       $('#userconfirmpassword + span').hide();
-      $('#userconfirmpassword').after('<span> should match with password</span>');
+      $('#userconfirmpassword').after('<span> Should match with password</span>');
       $('#userconfirmpassword + span').addClass('info');
     });
     $('#userconfirmpassword').focusout(function() {
@@ -172,13 +112,12 @@ export class RegistrationUserComponent implements OnInit {
         if (($('#userpassword').val().length > 7)) {
         if ($('#userpassword').val() == $('#userconfirmpassword').val()) {
           $('#userconfirmpassword + span').removeClass('info');
-    			$('#userconfirmpassword + span').text('OK');
+    			$('#userconfirmpassword + span').html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
     			$('#userconfirmpassword + span').addClass('ok');
         }
       } else {
-    			$('#userconfirmpassword + span').text('Error');
+    			$('#userconfirmpassword + span').text('Should match with password');
     			$('#userconfirmpassword + span').addClass('error');
->>>>>>> 4a16b89b1ce7dffdd3cd8e5af56c2c3bef887cdb
     		}
       } else {
     		$('#userconfirmpassword+span').hide();
@@ -186,22 +125,6 @@ export class RegistrationUserComponent implements OnInit {
     });
   $('#useremail').focus(function() {
 
-<<<<<<< HEAD
-  		$("#useremail+span").hide();
-  		$("#useremail").after("<span> example@email.com </span>");
-  		$("#useremail + span").addClass("info");
-  	})
-  	$("#useremail").focusout(function(){
-  		if($("#useremail").val().length != 0){
-  		if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($("#useremail").val())){
-  			$("#useremail + span").removeClass("info");
-  			$("#useremail + span").html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-  				$("#useremail + span").addClass("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-  	}
-  		else{
-  			$("#useremail + span").text("Invalid");
-  				$("#useremail + span").addClass("error");
-=======
   		$('#useremail+span').hide();
   		$('#useremail').after('<span>  example@example.com </span>');
   		$('#useremail + span').addClass('info');
@@ -210,12 +133,11 @@ export class RegistrationUserComponent implements OnInit {
   		if ($('#useremail').val().length != 0) {
   		if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($('#useremail').val())) {
   			$('#useremail + span').removeClass('info');
-  			$('#useremail + span').text('OK');
+  			$('#useremail + span').html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
   				$('#useremail + span').addClass('ok');
   	} else {
-  			$('#useremail + span').text('Error');
+  			$('#useremail + span').text('Invalid e-mail');
   				$('#useremail + span').addClass('error');
->>>>>>> 4a16b89b1ce7dffdd3cd8e5af56c2c3bef887cdb
   		}
   	}
   	else
@@ -264,26 +186,7 @@ export class RegistrationUserComponent implements OnInit {
 
     let obs = this.http.post('http://localhost:3000/person/newUserCreation', fd);
     obs.subscribe((data:any) => {
-<<<<<<< HEAD
-      console.log(data);
-
-      if(data.error == false)
-      {
-        console.log("routing here");
-        this.router.navigate(['/login']);
-      }
-      else
-      {
-        console.log("error creating the user");
-      }
-
-      },
-      (err:any) => {
-          console.log(err);
-      });
-=======
         console.log(data);
->>>>>>> 4a16b89b1ce7dffdd3cd8e5af56c2c3bef887cdb
 
         let obs1 = this.http.post('http://localhost:3000/person/privacySettingsCreate',
           {
@@ -299,6 +202,8 @@ export class RegistrationUserComponent implements OnInit {
             let obs2 = this.http.get('http://localhost:3000/person/addFriendFirstTime/'+this.emailId);
             obs2.subscribe((data:any) => {
                 console.log("successfully inserted the friends table ");
+                this.router.navigate(['/login']);
+
               },
               (err:any) => {
                 console.log("failed to insert the privacy settings ");
