@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit {
             if(data.userModel.length < 1)
             {
               //no users found
-              this.errorMessage = "No users found";
+              this.errorMessage = "User not found";
               this.errorPresent = true;
             }
             else

@@ -1,0 +1,37 @@
+
+
+div:first-of-type {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+label {
+  margin-right: 15px;
+  line-height: 32px;
+
+}
+
+input {
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 5px;
+
+  top: 4px;
+}
+.btn-success,
+p {
+  margin-left: 43%;
+  margin-left: 43%;
+}
+.box:first-child {
+  margin-top: 10%;}
+
+input:checked {
+  border: 6px solid black;
+}

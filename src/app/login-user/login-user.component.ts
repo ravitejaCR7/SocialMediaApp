@@ -32,6 +32,7 @@ export class LoginUserComponent implements OnInit {
     this.password = event.target.value;
   }
 
+
   loginButtonClick()
   {
     this.errorFlag = false;

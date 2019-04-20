@@ -22,6 +22,7 @@ privacyList: any = [
   'Friends',
   'Friends of friends'
 ];
+
 constructor(private http: HttpClient , private router: Router, private primaryKeyService: PrimaryKeyServiceService)
 {
 }
@@ -59,6 +60,7 @@ constructor(private http: HttpClient , private router: Router, private primaryKe
       obs.subscribe((data:any) =>
           {
             console.log("successfully changed the privacy settings ");
+            this.router.navigate(['/landing']);
           }
         );
     }

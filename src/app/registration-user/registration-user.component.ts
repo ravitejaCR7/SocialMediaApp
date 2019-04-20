@@ -31,18 +31,17 @@ export class RegistrationUserComponent implements OnInit {
   	$("#username").focus(function(){
 
   		 $("#username + span").hide();
-  		$("#username").after("<span > InfoMessage </span>");
   		$("#username + span").addClass("info");
   	})
   	$("#username").focusout(function(){
   		if($("#username").val().length != 0){
   		if(/^[a-zA-Z0-9]+$/.test($("#username").val())){
   			$("#username + span").removeClass("info");
-  			$("#username + span").text("ok");
-  				$("#username + span").addClass("ok");
+  			$("#username + span").html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
+  				$("#username + span").addClass("<span style='font-size:20px; color:#fff'>&#9989;</span>");
   	}
   		else{
-  			$("#username +span").text("Error");
+  			$("#username +span").text("Invalid Username");
   				$("#username +span").addClass("error");
   		}
   	}
@@ -52,15 +51,15 @@ export class RegistrationUserComponent implements OnInit {
   	$("#userpassword").focus(function(){
 
   		$("#userpassword+span").hide();
-  		$("#userpassword").after("<span> InfoMessage </span>");
+  		$("#userpassword").after("<span></span>");
   		$("#userpassword + span").addClass("info");
   	})
   	$("#userpassword").focusout(function(){
   		if($("#userpassword").val().length != 0){
   		if(($("#userpassword").val().length > 7)){
   			$("#userpassword + span").removeClass("info");
-  			$("#userpassword + span").text("OK");
-  				$("#userpassword + span").addClass("ok");
+  			$("#userpassword + span").html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
+  				$("#userpassword + span").addClass("<span style='font-size:20px; color:#fff'>&#9989;</span>");
   	}
   		else{
   			$("#userpassword + span").text("Error");
@@ -72,7 +71,7 @@ export class RegistrationUserComponent implements OnInit {
   	});
     $("#userconfirmpassword").focus(function(){
       $("#userconfirmpassword + span").hide();
-      $("#userconfirmpassword").after("<span> should match with password</span>")
+      $("#userconfirmpassword").after("<span>This should match with password</span>")
       $("#userconfirmpassword + span").addClass("info");
     })
     $("#userconfirmpassword").focusout(function(){
@@ -80,12 +79,12 @@ export class RegistrationUserComponent implements OnInit {
         if(($("#userpassword").val().length > 7)){
         if($("#userpassword").val() == $("#userconfirmpassword").val()){
           $("#userconfirmpassword + span").removeClass("info");
-    			$("#userconfirmpassword + span").text("OK");
-    			$("#userconfirmpassword + span").addClass("ok");
+    			$("#userconfirmpassword + span").html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
+    			$("#userconfirmpassword + span").addClass("<span style='font-size:20px; color:#fff'>&#9989;</span>");
         }
       }
         else{
-    			$("#userconfirmpassword + span").text("Error");
+    			$("#userconfirmpassword + span").text("Passwords donot match");
     			$("#userconfirmpassword + span").addClass("error");
     		}
       }
@@ -95,18 +94,18 @@ export class RegistrationUserComponent implements OnInit {
   $("#useremail").focus(function(){
 
   		$("#useremail+span").hide();
-  		$("#useremail").after("<span>  example@example.com </span>");
+  		$("#useremail").after("<span> example@email.com </span>");
   		$("#useremail + span").addClass("info");
   	})
   	$("#useremail").focusout(function(){
   		if($("#useremail").val().length != 0){
   		if(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($("#useremail").val())){
   			$("#useremail + span").removeClass("info");
-  			$("#useremail + span").text("OK");
-  				$("#useremail + span").addClass("ok");
+  			$("#useremail + span").html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
+  				$("#useremail + span").addClass("<span style='font-size:20px; color:#fff'>&#9989;</span>");
   	}
   		else{
-  			$("#useremail + span").text("Error");
+  			$("#useremail + span").text("Invalid");
   				$("#useremail + span").addClass("error");
   		}
   	}
@@ -161,6 +160,17 @@ export class RegistrationUserComponent implements OnInit {
     let obs = this.http.post('http://localhost:3000/person/newUserCreation', fd);
     obs.subscribe((data:any) => {
       console.log(data);
+
+      if(data.error == false)
+      {
+        console.log("routing here");
+        this.router.navigate(['/login']);
+      }
+      else
+      {
+        console.log("error creating the user");
+      }
+
       },
       (err:any) => {
           console.log(err);

@@ -1,3 +1,4 @@
+
 <div class = "main-container">
   <div class="row2">
 
@@ -32,9 +33,16 @@
   <label for="loginpassword">Password:</label>
 </div>
 <div class = "form-group col-md-3">
-  <input type="Password" class="form-control" id="loginpassword" name="loginpassword" (keyup) = "loginInputForPassword($event)">
+  <input type="Password" class="form-control" id="loginpassword" name="loginpassword"  (keydown.enter)="loginButtonClick($event)" (keyup) = "loginInputForPassword($event)">
 </div>
+
 </div>
+
+<div class="alert alert-danger col-md-3 offset-md-5" *ngIf="errorFlag">{{errorMessage}}.
+</div>
+
+
+
 <div class = "row">
 <div class = "form-group col-md-3 offset-md-3">
   <button class="btn btn-success" (click) = "loginButtonClick()">Login</button>
@@ -63,4 +71,3 @@
         <p>This webpage was created for the course Web Programming Languages by Timothy Panda.      </p>
     </div>
 </footer>
-<p *ngIf="errorFlag">{{errorMessage}}</p>

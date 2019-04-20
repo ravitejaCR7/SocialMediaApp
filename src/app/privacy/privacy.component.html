@@ -1,18 +1,12 @@
-<!-- Default unchecked -->
-<!-- Default checked -->
-<!-- <div class="custom-control custom-radio">
-  <input type="radio" class="custom-control-input" id="public" name="privacy-settings" checked>
-  <label class="custom-control-label" for="public">Public</label>
-</div> -->
-
-<div  *ngFor = "let privacy of privacyList">
+<div  class="box align-middle col-md-2 offset-md-5" *ngFor = "let privacy of privacyList">
   <input
   type = "radio"
 
   name = "privacySettings"
   value = "{{privacy}}"
   (change) = "privacyChangedHandler($event)">
-  <p>{{privacy}}</p>
+  <label>{{privacy}}</label>
+
 </div>
-<button (click)="privacyChange()">Post</button>
-<p *ngIf="errorFlag">select at least one option or Error With Email</p>
+<p class="alert alert-danger col-md-2 " *ngIf="errorFlag">Select at least one option</p>
+<button class="btn-success" (click)="privacyChange()">Update</button>

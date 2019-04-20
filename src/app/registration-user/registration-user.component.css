@@ -11,8 +11,7 @@
 
 .background{
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("r1.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 650px;
+    background-size: 100% 800px;
 }
 .form{
   border: 2px;
@@ -26,6 +25,8 @@
 }
 .form-group{
     display: inline;
+}
+.form-group input{
 }
 footer {
     background-color: #333;
