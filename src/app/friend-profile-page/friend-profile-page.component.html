@@ -1,7 +1,7 @@
 
 
 <div>
-  <img src="{{ friendProfilePicture }}" class="rounded-circle" />
+  <img src="{{ friendProfilePicture }}" class="rounded-circle" width="100px" height="100px"/>
   <h3>{{ friendName }}</h3>
 </div>
 
@@ -9,6 +9,6 @@
   <app-friend-profile-request></app-friend-profile-request>
 </div>
 
-
-
-
+<div>
+<app-my-profile-each-post   *ngFor="let userids of arrayOfIds" [userId]="userids"></app-my-profile-each-post>
+</div>

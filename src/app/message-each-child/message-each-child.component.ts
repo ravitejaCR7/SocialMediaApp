@@ -5,11 +5,11 @@ import { PrimaryKeyServiceService } from '../primary-key-service.service';
 
 
 @Component({
-  selector: 'app-search-each-child',
-  templateUrl: './search-each-child.component.html',
-  styleUrls: ['./search-each-child.component.css']
+  selector: 'app-message-each-child',
+  templateUrl: './message-each-child.component.html',
+  styleUrls: ['./message-each-child.component.css']
 })
-export class SearchEachChildComponent implements OnInit {
+export class MessageEachChildComponent implements OnInit {
 
   @Input() userId:string;
 

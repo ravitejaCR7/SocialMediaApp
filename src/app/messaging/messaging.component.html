@@ -1,3 +1,13 @@
-<p>
-  messaging works!
-</p>
+
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <input id="search-box" type="text" placeholder="Search for a user.." (keyup)="searchForThisUsers($event)">
+  </div>
+
+
+
+<div class="names col-md-4 offset-md-4">
+  <p *ngIf="errorPresent">{{errorMessage}}</p>
+    <app-message-each-child  *ngFor="let userids of arrayOfIds" [userId]="userids"></app-message-each-child>
+</div>
+</div>
