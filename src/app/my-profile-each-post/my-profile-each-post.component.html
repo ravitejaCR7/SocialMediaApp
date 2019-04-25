@@ -18,7 +18,8 @@
     </video>
   </div>
   <br>
-    <button type="button"class="btn btn-secondary btn-sm"   (click)="openComments()">Comments</button>
+    <button *ngIf="!requestComments" type="button"class="btn btn-secondary btn-sm"   (click)="openComments()">Comments</button>
+    <button *ngIf="requestComments" type="button"class="btn btn-secondary btn-sm"   (click)="requestForComments()">Request permission to Comment!</button>
     <div *ngIf = "showCommentsFlag">
       <br>
       <div class = "row">

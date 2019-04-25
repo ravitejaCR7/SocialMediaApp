@@ -30,11 +30,13 @@ export class MyProfileEachPostComponent implements OnInit {
   newCommentText:string = "";
   selectedImageOrVideo:File = null;
 
+  requestComments:boolean = false;
+
 
   constructor(private http: HttpClient , private router: Router,  private primaryKeyService: PrimaryKeyServiceService) { }
 
   ngOnInit() {
-    console.log("id is "+this.userId);
+    console.log("id of each post "+this.userId);
 
     this.userPrimaryKey = this.primaryKeyService.getPrimaryKey();
 
@@ -69,6 +71,13 @@ export class MyProfileEachPostComponent implements OnInit {
               this.videoFlag = true;
               this.videoSource = "http://localhost:3000/PostsBinaryData/"+data.userModel.postImageOrVideo;
             }
+          }
+          if( data.userModel.isCommentable == true ){
+            //requestComments = false;
+            this.requestComments = false;
+          }
+          else{
+            this.requestComments = true;
           }
         });
 

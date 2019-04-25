@@ -13,6 +13,7 @@ import { ViewAccountComponent } from './view-account/view-account.component';
 import { SearchEachChildComponent } from './search-each-child/search-each-child.component';
 import { FriendProfilePageComponent } from './friend-profile-page/friend-profile-page.component';
 import { MyProfilePageComponent } from './my-profile-page/my-profile-page.component';
+import { SocketMessengingComponent } from './socket-messenging/socket-messenging.component';
 
 const routes: Routes = [
   {path:'register' , component: RegistrationUserComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
     {path: 'messaging',component:MessagingComponent },
     {path: 'viewaccount', component: ViewAccountComponent },
     {path: 'friendAccount/:id', component: FriendProfilePageComponent },
-    {path: 'myProfilePage', component : MyProfilePageComponent }
+    {path: 'myProfilePage', component : MyProfilePageComponent },
+    {path: 'socketmessenger/:id', component : SocketMessengingComponent }
   ]}
 
 ];
@@ -38,6 +40,6 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [RegistrationUserComponent,
-  LoginUserComponent, LandingPageComponent,NotificationsComponent,PostComponent,SearchComponent,PrivacyComponent,
- MessagingComponent, ViewAccountComponent,SearchEachChildComponent,
- FriendProfilePageComponent,MyProfilePageComponent];
+  LoginUserComponent, LandingPageComponent, NotificationsComponent, PostComponent, SearchComponent, PrivacyComponent,
+ MessagingComponent, ViewAccountComponent, SearchEachChildComponent,
+  FriendProfilePageComponent, MyProfilePageComponent, SocketMessengingComponent];

@@ -16,9 +16,15 @@ export class FriendProfilePageComponent implements OnInit {
   emailId: string;
   friendProfilePicture: string;
   friendName: string;
+
+  arrayOfIds:string[];
+
   constructor(private http: HttpClient, private route: ActivatedRoute,  private router: Router , private primaryKeyService: PrimaryKeyServiceService, private friendPrimaryKeyService: FriendPrimaryKeyService) { }
 
   ngOnInit() {
+
+
+
     this.friendEmailId = this.route.snapshot.paramMap.get('id');
     this.friendPrimaryKeyService.setEmailId(this.friendEmailId);
     console.log("check "+ this.friendPrimaryKeyService.getEmailId());
@@ -45,6 +51,18 @@ export class FriendProfilePageComponent implements OnInit {
 
       });
     }
+
+
+    let gettingThePostsObs = this.http.get('http://localhost:3000/person/postedByThisUser/'+this.friendPrimaryKeyService.getEmailId());
+    gettingThePostsObs.subscribe((data:any) =>
+        {
+          console.log("All posts "+data);
+
+          this.arrayOfIds = new Array();
+          this.arrayOfIds = data.userModel.map(a => a._id) ;
+          console.log(" length  "+this.arrayOfIds);
+
+        });
 
 
   }
