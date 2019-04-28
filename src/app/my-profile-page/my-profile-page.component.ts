@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { PrimaryKeyServiceService } from '../primary-key-service.service';
+import { FriendPrimaryKeyService } from '../friend-primary-key.service';
 
 
 @Component({
@@ -21,13 +22,14 @@ export class MyProfilePageComponent implements OnInit {
 
   arrayOfIds:string[];
 
-  constructor(private http: HttpClient , private router: Router, private primaryKeyService: PrimaryKeyServiceService)
+  constructor(private http: HttpClient , private router: Router, private primaryKeyService: PrimaryKeyServiceService, private friendPrimaryKeyService: FriendPrimaryKeyService)
   {
   }
 
   ngOnInit() {
     this.userPrimaryKey = this.primaryKeyService.getPrimaryKey();
     console.log('key in my profile : '+this.userPrimaryKey);
+    this.friendPrimaryKeyService.setEmailId("");
 
     this.childPostsCreateMethod();
 
