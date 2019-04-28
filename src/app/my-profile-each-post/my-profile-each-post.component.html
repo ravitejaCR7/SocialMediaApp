@@ -15,14 +15,14 @@
       <source src="{{videoSource}}" type="video/mp4" width=100% height="300px"/>
     </video>
   </div>
-<<<<<<< HEAD
-    <button class="comment-btn" (click)="openComments()" style="font-size:15px">Comment <i class="fa fa-comments-o"></i></button>
-=======
+
+    <!-- <button class="comment-btn" (click)="openComments()" style="font-size:15px">Comment <i class="fa fa-comments-o"></i></button> -->
+
   <br>
-    <button *ngIf="!requestComments" type="button"class="btn btn-secondary btn-sm"   (click)="openComments()">Comments</button>
-    <button *ngIf="requestComments" type="button"class="btn btn-secondary btn-sm"   (click)="requestForComments()">Request permission to Comment!</button>
+    <button *ngIf="!requestComments" type="button" class="comment-btn" style="font-size:15px"  (click)="openComments()">Comments <i class="fa fa-comments-o"></i> </button>
+    <button *ngIf="requestComments" type="button" class="comment-btn" style="font-size:15px"  (click)="requestForComments()">Request permission to Comment! <i class="fa fa-comments-o"></i> </button>
     <p *ngIf="serverResponseFlag">{{serverResponse}}</p>
->>>>>>> 457fb551c905091c6a8bb2510c66deec557e2be7
+
     <div *ngIf = "showCommentsFlag">
       <div class = "row col-md-12 commentSection">
       <input type="text" class="form-control col-md-10" id="commentText" name="commentText"   placeholder = " Write a comment..."(keyup) = "onCommentTextEntered($event)">
