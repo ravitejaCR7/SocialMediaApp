@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { PrimaryKeyServiceService } from '../primary-key-service.service';
+import { FriendPrimaryKeyService } from '../friend-primary-key.service';
 
 @Component({
   selector: 'app-my-profile-each-post',
@@ -32,8 +33,11 @@ export class MyProfileEachPostComponent implements OnInit {
 
   requestComments:boolean = false;
 
+  serverResponseFlag:boolean = false;
+  serverResponse:String = "";
 
-  constructor(private http: HttpClient , private router: Router,  private primaryKeyService: PrimaryKeyServiceService) { }
+
+  constructor(private http: HttpClient , private router: Router,  private primaryKeyService: PrimaryKeyServiceService, private friendPrimaryKeyService: FriendPrimaryKeyService) { }
 
   ngOnInit() {
     console.log("id of each post "+this.userId);
@@ -78,6 +82,41 @@ export class MyProfileEachPostComponent implements OnInit {
           }
           else{
             this.requestComments = true;
+
+            let obsGetCommentableInfo = this.http.get('http://localhost:3000/person/isCommentableInfo/'+this.friendPrimaryKeyService.getEmailId()+"/"+this.primaryKeyService.getEmailId()+"/"+this.userId);
+            obsGetCommentableInfo.subscribe((data:any) =>
+                {
+                  console.log("pre user commentability : "+data);
+                  this.serverResponseFlag = false;
+                  this.serverResponse = "";
+
+                  if(data.userModel != null){
+                    //not a new request
+                        if(data.userModel.status == 1){
+                          // waiting for the friend to accept this comment request
+                          console.log("1");
+                          this.serverResponseFlag = true;
+                          this.serverResponse = "waiting for the friend to accept this comment request";
+                        }
+                        else if(data.userModel.status == 2){
+                          // friend has accepted his comments request and so this guy can comment in the normal way
+                          console.log("2");
+                          this.requestComments = false;
+                          this.serverResponseFlag = false;
+                          this.serverResponse = "";
+                        }
+                        else if(data.userModel.status == 3){
+                          // friend has rejected your comment request
+                          console.log("3");
+                          this.serverResponseFlag = true;
+                          this.serverResponse = "This dude rejected your comment request";
+                        }
+
+                  }
+
+
+                });
+
           }
         });
 
@@ -146,8 +185,58 @@ export class MyProfileEachPostComponent implements OnInit {
         });
 
     }
+  }
 
+  requestForComments()
+  {
+    // console.log("serious : "+this.primaryKeyService.getEmailId()+" |||| "+this.friendPrimaryKeyService.getEmailId());
 
+    if(this.friendPrimaryKeyService.getEmailId() == undefined || this.friendPrimaryKeyService.getEmailId() == "" ){
+      console.log("same user's profile");
+    }
+    else{
+      console.log("diff user's profile");
+      let obsGetCommentableInfo = this.http.get('http://localhost:3000/person/isCommentableInfo/'+this.friendPrimaryKeyService.getEmailId()+"/"+this.primaryKeyService.getEmailId()+"/"+this.userId);
+      obsGetCommentableInfo.subscribe((data:any) =>
+          {
+            console.log("user commentability : "+data);
+            this.serverResponseFlag = false;
+            this.serverResponse = "";
+
+            if(data.userModel == null)
+            {
+              // create new notification about this comment
+              console.log("0");
+              let obsCreateCommentableInfo = this.http.get('http://localhost:3000/person/isCommentableCreateNew/'+this.friendPrimaryKeyService.getEmailId()+"/"+this.primaryKeyService.getEmailId()+"/"+this.userId);
+              obsCreateCommentableInfo.subscribe((data:any) => {
+                console.log(data);
+                },
+                (err:any) => {
+                    console.log(err);
+                });
+            }
+            else if(data.userModel.status == 1){
+              // waiting for the friend to accept this comment request
+              console.log("1");
+              this.serverResponseFlag = true;
+              this.serverResponse = "waiting for the friend to accept this comment request";
+            }
+            else if(data.userModel.status == 2){
+              // friend has accepted his comments request and so this guy can comment in the normal way
+              console.log("2");
+              this.requestComments = false;
+              this.serverResponseFlag = false;
+              this.serverResponse = "";
+            }
+            else if(data.userModel.status == 3){
+              // friend has rejected your comment request
+              console.log("3");
+              this.serverResponseFlag = true;
+              this.serverResponse = "This dude rejected your comment request";
+            }
+
+          });
+    }
   }
 
 }

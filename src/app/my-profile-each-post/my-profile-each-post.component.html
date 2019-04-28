@@ -20,6 +20,7 @@
   <br>
     <button *ngIf="!requestComments" type="button"class="btn btn-secondary btn-sm"   (click)="openComments()">Comments</button>
     <button *ngIf="requestComments" type="button"class="btn btn-secondary btn-sm"   (click)="requestForComments()">Request permission to Comment!</button>
+    <p *ngIf="serverResponseFlag">{{serverResponse}}</p>
     <div *ngIf = "showCommentsFlag">
       <br>
       <div class = "row">

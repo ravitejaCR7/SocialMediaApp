@@ -1,0 +1,7 @@
+<p>{{senderName}} wants to comment on one of your post's</p>
+<div *ngIf="showButtons">
+  <button (click) = "acceptComment()">Accept</button>
+  <button (click) = "rejectComment()">Reject</button>
+</div>
+<p>{{serverResponse}}</p>
+<br/>

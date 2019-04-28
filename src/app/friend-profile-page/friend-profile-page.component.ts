@@ -34,6 +34,7 @@ export class FriendProfilePageComponent implements OnInit {
       this.isFriend = true;
       console.log('Matched!! ' + this.emailId + ' ' + this.friendEmailId);
       console.log(this.router.url);
+      this.friendPrimaryKeyService.setEmailId("");
       this.router.navigate(['../landing/myProfilePage']);
     } else {
       console.log('Not matched');
@@ -52,6 +53,7 @@ export class FriendProfilePageComponent implements OnInit {
       });
     }
 
+    //write logic to control the privacy
 
     let gettingThePostsObs = this.http.get('http://localhost:3000/person/postedByThisUser/'+this.friendPrimaryKeyService.getEmailId());
     gettingThePostsObs.subscribe((data:any) =>
