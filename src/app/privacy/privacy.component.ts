@@ -60,7 +60,7 @@ constructor(private http: HttpClient , private router: Router, private primaryKe
       obs.subscribe((data:any) =>
           {
             console.log("successfully changed the privacy settings ");
-            this.router.navigate(['/landing']);
+            this.router.navigate(['../landing/myProfilePage']);
           }
         );
     }

@@ -1,14 +1,18 @@
 
-
-<div>
-  <img src="{{ friendProfilePicture }}" class="rounded-circle" width="100px" height="100px"/>
-  <h3>{{ friendName }}</h3>
+<div class="full-page col-md-12">
+<div class="profile col-md-6 offset-md-3" >
+  <div class="row name">
+  <img src="{{ friendProfilePicture }}" class="rounded-circle" width="100px" height="100px" style="margin-left:25px;"/>
+  <p>{{ friendName }}</p>
+  </div>
+  <div class="status" *ngIf="!isFriend">
+    <app-friend-profile-request></app-friend-profile-request>
+  </div>
 </div>
 
-<div *ngIf="!isFriend">
-  <app-friend-profile-request></app-friend-profile-request>
-</div>
 
-<div>
+
+<div class="posts offset-md-3 col-md-6">
 <app-my-profile-each-post   *ngFor="let userids of arrayOfIds" [userId]="userids"></app-my-profile-each-post>
+</div>
 </div>

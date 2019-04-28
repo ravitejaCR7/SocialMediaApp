@@ -29,4 +29,11 @@ export class MessageEachChildComponent implements OnInit {
 
   }
 
+  testing()
+  {
+    console.log("testing");
+    // [routerLink] = "['../messaging/socketmessenger',userId]"
+    this.router.navigate(['../landing/messaging/socketmessenger',this.userId]);
+  }
+
 }

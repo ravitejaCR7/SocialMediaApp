@@ -1,0 +1,21 @@
+.profile p {
+    font-size: 150%;
+    padding: 25px;
+}
+.profile{
+    border-bottom: 1px solid #ccc;
+    padding: 1%;
+}
+.status{
+  margin-left: 2%;
+}
+
+.full-page{
+  margin-top: 80px;
+  background-color: #ccc;
+}
+
+.profile,
+.posts{
+  background-color: #fff;
+}

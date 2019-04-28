@@ -30,7 +30,7 @@ export class EachCommentOfPostsComponent implements OnInit {
           this.postTexted = data.userModel.textEntered;
           if( data.userModel.postImageOrVideo != null )
           {
-            if(data.userModel.postImageOrVideo.endsWith(".jpeg") || data.userModel.postImageOrVideo.endsWith(".JPG") || data.userModel.postImageOrVideo.endsWith(".jpg") || data.userModel.postImageOrVideo.endsWith(".png"))
+            if(data.userModel.postImageOrVideo.endsWith(".jpeg") || data.userModel.postImageOrVideo.endsWith(".JPG") || data.userModel.postImageOrVideo.endsWith(".jpg")|| data.userModel.postImageOrVideo.endsWith(".PNG") || data.userModel.postImageOrVideo.endsWith(".png"))
             {
               console.log("Image ...");
               this.imageFlag = true;

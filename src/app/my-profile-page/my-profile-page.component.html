@@ -1,3 +1,21 @@
-<div class = "main">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="content col-md-12">
+<div class="form-popup col-md-6 offset-md-3 align-middle">
+
+<div class = "row postSection col-md-12">
+  <textarea class="col-md-12" rows="5" id="postText" name="postText" placeholder = "What's on your mind ?" (keyup) = "posttext($event)"></textarea>
+  <input type="file" id="files" class="hidden" name ="profilePic" accept="image/*|video/* " (change) = "onImageUpload($event)">
+  <label for="files" class="camera col-md-4" >Photo/Video<span class="glyphicon">&#xe046;</span></label>
+  <strong class="col-md-3">Disable comments</strong>
+  <input  class="cmtCheck" type="radio" value="yes" name="commentability" (change) = radioCommentType($event) checked> No
+  <input  class="cmtCheck" type="radio" value="no" name="commentability" (change) = radioCommentType($event)> Yes
+  <button type="button" class="btn btn-secondary btn-sm" (click)="postcontent()" >Post</button>
+</div>
+
+
+</div>
+<div class = "profile col-md-6 offset-md-3">
 <app-my-profile-each-post   *ngFor="let userids of arrayOfIds" [userId]="userids"></app-my-profile-each-post>
+</div>
 </div>

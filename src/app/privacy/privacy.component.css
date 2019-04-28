@@ -6,9 +6,12 @@ div:first-of-type {
   margin-bottom: 5px;
 }
 
-label {
-  margin-right: 15px;
-  line-height: 32px;
+.test{
+    margin-top: 130px;
+}
+ul{
+  list-style: none;
+  list-style-type: none;
 
 }
 
@@ -26,11 +29,9 @@ input {
 }
 .btn-success,
 p {
-  margin-left: 43%;
-  margin-left: 43%;
+  margin-left: 45%;
 }
-.box:first-child {
-  margin-top: 10%;}
+
 
 input:checked {
   border: 6px solid black;

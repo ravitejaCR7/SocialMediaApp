@@ -1,3 +1,7 @@
+.row2{
+  z-index: 100;
+}
+
 .logo{
   height: 100px;
   width: auto;
@@ -42,40 +46,9 @@ footer {
     text-align: center;
     margin-top: 10px;
 }
-
-.footer-nav {
-    list-style: none;
-    float: left;
-}
-.footer-nav li {
-    display: inline-block;
-    margin-right: 20px;
-}
-.footer-nav li a:link,
-.footer-nav li a:visited{
-    text-decoration: none;
-    border: 0;
-    color: #888;
-    transition: color 0.2s;
-}
-
-.footer-nav li a:hover,
-.footer-nav li a:active {
-    color: #fff;
-}
-
-
-
-/* .main-container{
-  background-color: rgba(52, 84, 57, 0.5);
-  border: 5px solid yellow;
-  padding: 30px;
-} */
-
-
 .main-container{
     background-attachment: fixed;
-    height: 10vh;
+    height: 80px;
     background-color: #333;
 }
 .row2{

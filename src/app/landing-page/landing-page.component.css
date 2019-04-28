@@ -1,11 +1,57 @@
 /* Header */
+.scrollmenu{
+    background: #ccc;
+}
 .page{
   background-color: #90caf9
 }
 .main-container{
-    background-attachment: fixed;
-    height: 10vh;
+    /* background-attachment: fixed; */
+    height: 80px;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    background-color: #333;
+}
 
+.results{
+  border-radius: 10px;
+  border: 1px solid #333;
+  padding: 3px;
+  font-size: 12px;
+  text-align: right;
+}
+p{
+  text-transform: capitalize;
+}
+
+.search-box{
+  style:none;
+  vertical-align: middle;
+  display: block;
+  outline: none;
+  margin: auto;
+  border-radius: 25px;
+  border: 2px solid #333;
+  padding: 15px;
+}
+
+.search-container {
+  width: 300px;
+  margin-top: 25px;
+  margin-left: 40px;
+  z-index: 100;
+}
+
+.search-results,
+.search-container p {
+  margin-left: 10px;
+  position: absolute;
+  overflow: scroll;
+  max-height: 200px;
+  width: 300px;
+  border-radius: 10px;
+  background-color: #ddd;
 }
 .row{
   display: flex;
@@ -17,7 +63,7 @@
 .logo{
   height: 80px;
   width: auto;
-  padding-left: 20px;
+  margin-left: 180px;
 }
 
 .main-nav {
@@ -33,10 +79,12 @@
 
 .main-nav li {
     display: inline-block;
-    margin-left: 60px;
+    margin-left: 25px;
 }
 
-
+#name{
+      color: #eee;
+}
 .main-nav li a:link,
 .main-nav li a:visited{
     text-decoration: none;
@@ -45,7 +93,10 @@
     transition: color 0.2s;
 }
 .main-nav li a:hover,
-.main-nav li a:active,
-.footer-nav li a:active {
+.main-nav li a:active{
     color: #ddd;
+}
+
+img{
+  margin-right: 5px;
 }

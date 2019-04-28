@@ -3,6 +3,7 @@ import { ChatIoServiceService } from '../chat-io-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PrimaryKeyServiceService} from '../primary-key-service.service';
 import {HttpClient} from '@angular/common/http';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-socket-messenging',
@@ -21,9 +22,21 @@ export class SocketMessengingComponent implements OnInit {
   messageText:String;
   messageArray:Array<{user:String, message:String}> = [];
 
+  thisUsersName:String;
+
+  friendProfilePicture:String;
+  friendName:String;
+
   constructor(private http: HttpClient, private chatService: ChatIoServiceService, private route: ActivatedRoute, private primaryKeyService: PrimaryKeyServiceService ) {
 
     this.friendEmailId = this.route.snapshot.paramMap.get('id');
+
+    this.route.params.subscribe(routeParams => {
+              // this.cityName = routeParams.name;
+              this.friendEmailId = routeParams.id;
+              console.log("testing subs : "+this.friendEmailId);
+              this.ngOnInit();
+            });
 
     this.chatService.newUserJoined()
         .subscribe( data => this.messageArray.push(data) );
@@ -38,14 +51,35 @@ export class SocketMessengingComponent implements OnInit {
     let obsChatRoom = this.http.get('http://localhost:3000/person/getTheChatRoom/' + this.primaryKeyService.getEmailId()+"/"+this.friendEmailId);
     obsChatRoom.subscribe((data: any) => {
 
-        //this redundant call is just to make early save and get the id of the chat room
 
         });
   }
 
   ngOnInit() {
     console.log("mess : "+this.friendEmailId);
-    console.log("mess1 sender : "+this.primaryKeyService.getEmailId());
+    console.log("4321 : "+this.friendEmailId);
+
+    let obs = this.http.get('http://localhost:3000/person/specificUserInfo/' + this.friendEmailId);
+    obs.subscribe((data: any) => {
+      this.friendName = data.userModel.name;
+      if (data.userModel.personPic != null) {
+        if (data.userModel.personPic.endsWith('.JPG') || data.userModel.personPic.endsWith('.jpg') || data.userModel.personPic.endsWith('.png')) {
+          console.log('Image ...' + 'http://localhost:3000/uploads/' + data.userModel.personPic);
+          this.friendProfilePicture = 'http://localhost:3000/uploads/' + data.userModel.personPic;
+        } else {
+          this.friendProfilePicture = 'http://localhost:3000/uploads/default.jpeg';
+        }
+      }
+
+    });
+
+    //to get this user's username
+    let obs1 = this.http.get('http://localhost:3000/person/specificUserInfo/' + this.primaryKeyService.getEmailId());
+    obs1.subscribe((data: any) => {
+      this.thisUsersName = data.userModel.name;
+
+    });
+
 
     let obsChatRoom = this.http.get('http://localhost:3000/person/getTheChatRoom/' + this.primaryKeyService.getEmailId()+"/"+this.friendEmailId);
     obsChatRoom.subscribe((data: any) => {
@@ -70,8 +104,14 @@ export class SocketMessengingComponent implements OnInit {
   sendMessage()
   {
     if( this.chatId.length > 0 && this.messageText.length > 0 ){
-      this.chatService.sendMessage({userName:this.primaryKeyService.getEmailId(), userRoom:this.chatId, message:this.messageText});
+      this.chatService.sendMessage({userName:this.thisUsersName, userRoom:this.chatId, message:this.messageText});
+      var d = $('.msgs');
+        d.append( "<br/>" );
+        var height = d.prop("scrollHeight");
+        console.log('height is : ' + height);
+        d.scrollTop(height+20);
     }
+    this.messageText="";
   }
 
 }

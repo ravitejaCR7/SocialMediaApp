@@ -1,30 +1,14 @@
 
-<div>
-  <div class="card" style="width: 500px;">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item  try">
-  <p >{{postTexted}}</p>
+  <div class="card" style="width:90%; margin-left:4%;">
+
+  <div class="card-body" >{{postTexted}}</div>
   <div *ngIf="imageFlag">
     <img  src={{imgOrVid}}  width="300px" height="150px"/>
   </div>
 
-  <div *ngIf="videoFlag" width="100px" height="150px">
-    <video  controls id="videoPlayer" width="100px" height="150px">
+  <div *ngIf="videoFlag" width="300px" height="150px">
+    <video  controls id="videoPlayer" width="300px" height="150px">
       <source src="{{videoSource}}" type="video/mp4" />
     </video>
   </div>
-</li>
-</ul>
 </div>
-</div>
-
-
-
-
-<!-- <div class="card" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-</div> -->

@@ -25,6 +25,32 @@ export class MessagingComponent implements OnInit {
 
   ngOnInit() {
     this.errorPresent = false;
+    console.log("mess");
+
+
+    //getting this guy's friends list
+    let obs = this.http.get('http://localhost:3000/person/getTheChatRoomFriends/'+this.primaryKeyService.getEmailId());
+    obs.subscribe((data:any) =>
+        {
+          // console.log("search error response : "+data.error);
+          // console.log("search response : "+data.userModel.map(a => a._id));
+          this.arrayOfIds = new Array();
+          this.arrayOfIds = data.listEmail ;
+          console.log(" 11112222  "+this.arrayOfIds);
+          if(this.arrayOfIds.length < 1)
+          {
+            //no users found
+            this.errorMessage = "No Friends to text";
+            this.errorPresent = true;
+          }
+          else
+          {
+            this.errorPresent = false;
+            this.errorMessage = "";
+          }
+          console.log("array "+this.arrayOfIds);
+        });
+
   }
 
   searchForThisUsers(event:any)
@@ -55,6 +81,33 @@ export class MessagingComponent implements OnInit {
             console.log("array "+this.arrayOfIds);
           });
     }
+    else{
+
+      //getting this guy's friends list
+      let obs = this.http.get('http://localhost:3000/person/getTheChatRoomFriends/'+this.primaryKeyService.getEmailId());
+      obs.subscribe((data:any) =>
+          {
+            // console.log("search error response : "+data.error);
+            // console.log("search response : "+data.userModel.map(a => a._id));
+            this.arrayOfIds = new Array();
+            this.arrayOfIds = data.listEmail ;
+            console.log(" 11112222  "+this.arrayOfIds);
+            if(this.arrayOfIds.length < 1)
+            {
+              //no users found
+              this.errorMessage = "No Friends to text";
+              this.errorPresent = true;
+            }
+            else
+            {
+              this.errorPresent = false;
+              this.errorMessage = "";
+            }
+            console.log("array "+this.arrayOfIds);
+          });
+
+    }
   }
+
 
 }

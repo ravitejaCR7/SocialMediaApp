@@ -24,11 +24,13 @@ const routes: Routes = [
     {path: 'post',component:PostComponent },
     {path: 'search',component:SearchComponent },
     {path: 'privacy',component:PrivacyComponent },
-    {path: 'messaging',component:MessagingComponent },
+    {path: 'messaging',component:MessagingComponent, children: [
+            {path: 'socketmessenger/:id', component : SocketMessengingComponent }
+    ]},
     {path: 'viewaccount', component: ViewAccountComponent },
     {path: 'friendAccount/:id', component: FriendProfilePageComponent },
     {path: 'myProfilePage', component : MyProfilePageComponent },
-    {path: 'socketmessenger/:id', component : SocketMessengingComponent }
+
   ]}
 
 ];

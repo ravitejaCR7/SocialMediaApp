@@ -1,11 +1,63 @@
-.main{
-  /* background-image: url("3.jpg"); */
-  background-color:#E3F2FD;
-  background-color:#aaa;
-  /* opacity: 0.5; */
+.profile{
+  position: relative;
+  margin-top: 85px;
+}
+.form-popup{
+  background-color: #fff;
+}
 
-
+.content{
+    background-color:#aaa;
 }
 .text{
   background : rgba(0, 0, 0, 0.6);
+}
+
+.btn{
+  border-radius: 10px;
+  border: 1px solid #333;
+  padding: 4px 8px;
+  margin-left: 15%;
+}
+
+.cmtCheck {
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 5px;
+  top: 4px;
+}
+
+.cmtCheck:checked {
+  border: 6px solid black;
+}
+label,
+.cmtCheck{
+  cursor: pointer;
+}
+.camera{
+  text-decoration: none;
+}
+#postText{
+  margin-bottom: 5px;
+}
+.form-popup{
+  position: relative;
+  top: 80px;
+}
+.row {
+  padding: 5px;
+  width:100%;
+}
+input {
+  text-align: center;
+  padding: 5px;
+}
+
+.hidden{
+  visibility: hidden;
 }

@@ -1,14 +1,25 @@
+
 <div class="scrollmenu">
 <div class = "main-container">
   <div class="row">
-  <img class = "logo" src="http://localhost:3000/uploads/logo.png" alt="logo">
+  <a [routerLink] = "['./myProfilePage']"><img class = "logo"  src="http://localhost:3000/uploads/logo.png" alt="logo" /></a>
+  <div class="search-container offset-md-3">
+    <input class="search-box" style="width:300px; height:35px;" type="text" placeholder="Search for a user.." (keyup)="searchForThisUsers($event)" (notify)="notify11($event)" >
+
+      <p *ngIf="errorPresent" style="width:300px; height:35px;">{{errorMessage}}</p>
+        <div class="search-results">
+          <app-search-each-child  *ngFor="let userids of arrayOfIds" [userId]="userids"></app-search-each-child>
+        </div>
+  </div>
+
+
   <nav class="main-nav">
 
     <ul class="header-links">
-      <li><a class = "header-links-style" [routerLink] = "['./myProfilePage']">My Profile</a></li>
-      <li><a class = "header-links-style" [routerLink] = "['./search']">Search</a></li>
-      <li><a class = "header-links-style" [routerLink] = "['./post']" >Post</a></li>
-      <li><a class = "header-links-style" [routerLink] = "['./viewaccount']">View Account</a></li>
+      <li><a class = "header-links-style" id="name" [routerLink] = "['./myProfilePage']"><img src="{{ profilePicture }}" class="rounded-circle" width="40px" height="40px"/>
+        {{thisUsersName}}</a></li>
+      <!-- <li><a class = "header-links-style" [routerLink] = "['./search']">Search</a></li> -->
+      <!-- <li><a class = "header-links-style" [routerLink] = "['./post']" >Post</a></li> -->
       <li><a class = "header-links-style" [routerLink] = "['./privacy']">Privacy</a></li>
       <li><a class = "header-links-style" [routerLink] = "['./messaging']">Message</a></li>
       <li><a class = "header-links-style" [routerLink] = "['./notifications']">Notifications</a></li>
@@ -20,4 +31,5 @@
 </div>
 </div>
 </div>
+
 <router-outlet></router-outlet>

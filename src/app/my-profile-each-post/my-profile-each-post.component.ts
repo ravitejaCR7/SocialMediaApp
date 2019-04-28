@@ -59,7 +59,7 @@ export class MyProfileEachPostComponent implements OnInit {
           this.postTexted = data.userModel.textEntered;
           if( data.userModel.postImageOrVideo != null )
           {
-            if(data.userModel.postImageOrVideo.endsWith(".JPG") || data.userModel.postImageOrVideo.endsWith(".jpg") || data.userModel.postImageOrVideo.endsWith(".png") || data.userModel.postImageOrVideo.endsWith(".PNG"))
+            if(data.userModel.postImageOrVideo.endsWith(".JPG") || data.userModel.postImageOrVideo.endsWith(".jpg") || data.userModel.postImageOrVideo.endsWith(".png") || data.userModel.postImageOrVideo.endsWith(".PNG") || data.userModel.postImageOrVideo.endsWith(".jpeg") )
             {
               console.log("Image ...");
               this.imageFlag = true;
@@ -106,7 +106,7 @@ export class MyProfileEachPostComponent implements OnInit {
             console.log("search child response : "+data);
 
             this.commentIdArray = new Array();
-            this.commentIdArray = data.userModel.map(a => a._id);
+            this.commentIdArray = data.userModel.map(a => a._id).reverse();
 
             if(this.commentIdArray.length > 0)
             {

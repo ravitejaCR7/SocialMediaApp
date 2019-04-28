@@ -1,45 +1,33 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row main">
-  <div class="col-md-4 offset-md-3 ">
-  <div class="col-md-6 offset-md-3 ">
-<div  class = "size"style = " background-color: white;border: 3px; border-style: outset;  ">
+<div  class = "size"style = " background-color: white;border: 1px solid #bbb;">
   <small>DatePosted : {{datePosted}}</small>
-  <h3 style = " color:#1A237E">{{postTexted}}</h3>
+  <h3 class="col-md-12" style = " color:#1A237E">{{postTexted}}</h3>
 
   <div *ngIf="imageFlag">
-    <div class="card" style="width: 500px">
-    <img   class="img-responsive" src={{imgOrVid}}  class="img-thumbnail" width="500" height="500">
-    <!-- <div class="card-body">
-      <h4 class="card-text">{{postTexted}}</h4>
-    </div> -->
+    <div class="card col-md-12">
+    <img   class="img-responsive" src={{imgOrVid}}  class="img-thumbnail" width=90% height="300px">
     </div>
   </div>
-  <div *ngIf="videoFlag" width="500px" height="300px">
-    <video  controls id="videoPlayer" width="500px" height="300px">
-      <source src="{{videoSource}}" type="video/mp4" width="500px" height="300px"/>
+  <div *ngIf="videoFlag" class="col-md-12"  height="300px">
+    <video  controls id="videoPlayer" width=100% height="300px">
+      <source src="{{videoSource}}" type="video/mp4" width=100% height="300px"/>
     </video>
   </div>
-  <br>
-    <button *ngIf="!requestComments" type="button"class="btn btn-secondary btn-sm"   (click)="openComments()">Comments</button>
-    <button *ngIf="requestComments" type="button"class="btn btn-secondary btn-sm"   (click)="requestForComments()">Request permission to Comment!</button>
+    <button class="comment-btn" (click)="openComments()" style="font-size:15px">Comment <i class="fa fa-comments-o"></i></button>
     <div *ngIf = "showCommentsFlag">
-      <br>
-      <div class = "row">
-    	<div class = "form-group col-md-4 ">
-    	<div class = "form-group col-md-12 ">
-      <input type="text" class="form-control round" id="commentText" name="commentText"   placeholder = " write a comment..."(keyup) = "onCommentTextEntered($event)">
+      <div class = "row col-md-12 commentSection">
+      <input type="text" class="form-control col-md-10" id="commentText" name="commentText"   placeholder = " Write a comment..."(keyup) = "onCommentTextEntered($event)">
+      <input type="file" id="files" class="hidden" name ="commentPic" accept="image/*|video/* " (change) = "onImageUpload($event)">
+      <label for="files" class="camera  col-md-1"><span class="glyphicon">&#xe046;</span></label>
+
+      <button  type="button col-md-1" class="post btn btn-secondary btn-sm" (click)="postNewComment()" >Post</button>
       </div>
-      <div class = "form-group col-md-1 ">
-      <input type="file" name ="commentPic" accept="image/*|video/* " (change) = "onImageUpload($event)"><br>
-    </div>
-    </div>
-      <button  type="button" class="btn btn-secondary btn-sm" (click)="postNewComment()" >Comment!</button>
-      <br>
       <app-each-comment-of-posts *ngFor="let eachCommentId of commentIdArray" [eachCommentId]="eachCommentId"></app-each-comment-of-posts>
     </div>
 </div>
 </div>
-</div>
-<br/>
 
 
 

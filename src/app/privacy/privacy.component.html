@@ -1,12 +1,12 @@
-<div  class="box align-middle col-md-2 offset-md-5" *ngFor = "let privacy of privacyList">
-  <input
-  type = "radio"
 
-  name = "privacySettings"
-  value = "{{privacy}}"
-  (change) = "privacyChangedHandler($event)">
-  <label>{{privacy}}</label>
+<div  class="test align-middle col-md-2 offset-md-5">
+  <ul>
+ <li><input type = "radio" name = "privacySettings" value = "Public" (change) = "privacyChangedHandler($event)"><label>Public</label></li>
+ <li><input type = "radio" name = "privacySettings" value = "Friends of friends" (change) = "privacyChangedHandler($event)"><label>Friends of friends</label></li>
+ <li><input type = "radio" name = "privacySettings" value = "Friends" (change) = "privacyChangedHandler($event)"><label>Friends</label></li>
+ <li><input type = "radio" name = "privacySettings" value = "Private" (change) = "privacyChangedHandler($event)"><label>Private</label></li>
 
+</ul>
 </div>
 <p class="alert alert-danger col-md-2 " *ngIf="errorFlag">Select at least one option</p>
-<button class="btn-success" (click)="privacyChange()">Update</button>
+<button class="btn-success" [routerLink] = "['./myProfilePage']" (click)="privacyChange()">Update</button>

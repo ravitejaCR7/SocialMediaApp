@@ -11,6 +11,11 @@ import { PrimaryKeyServiceService } from '../primary-key-service.service';
 })
 export class MyProfilePageComponent implements OnInit {
 
+  content: string = "";
+  selectedImageOrVideo:File = null;
+  commentableFlag:boolean = true;
+  commentable:string = "";
+
   userPrimaryKey = "";
   userPrimaryMailId:string="";
 
@@ -24,6 +29,11 @@ export class MyProfilePageComponent implements OnInit {
     this.userPrimaryKey = this.primaryKeyService.getPrimaryKey();
     console.log('key in my profile : '+this.userPrimaryKey);
 
+    this.childPostsCreateMethod();
+
+  }
+
+  childPostsCreateMethod(){
     let obs = this.http.get('http://localhost:3000/person/userInfo/'+this.userPrimaryKey);
     obs.subscribe((data:any) =>
         {
@@ -38,12 +48,55 @@ export class MyProfilePageComponent implements OnInit {
                 console.log("All posts "+data);
 
                 this.arrayOfIds = new Array();
-                this.arrayOfIds = data.userModel.map(a => a._id) ;
+                this.arrayOfIds = data.userModel.map(a => a._id).reverse() ;
                 console.log(" length  "+this.arrayOfIds);
 
               });
         });
 
+  }
+
+  posttext(event:any){
+    this.content = event.target.value;
+  }
+
+  onImageUpload(event:any)
+  {
+    console.log(event);
+    this.selectedImageOrVideo = event.target.files[0];
+  }
+
+  radioCommentType(event:any){
+    this.commentable = event.target.value;
+    console.log(this.commentable);
+
+    if(this.commentable == "yes")
+      this.commentableFlag = true;
+    else
+      this.commentableFlag = false;
+  }
+
+  postcontent(){
+
+    console.log("text11: "+this.content);
+    console.log("image11: "+this.selectedImageOrVideo);
+    console.log("radio11: "+this.commentableFlag);
+
+    const fd = new FormData();
+    fd.append("email", this.userPrimaryMailId);
+    fd.append("datePosted", ""+new Date());
+    fd.append("textEntered", this.content);
+    fd.append("postImageOrVideo", this.selectedImageOrVideo);
+    fd.append("isCommentable", ""+this.commentableFlag);
+
+    let obs = this.http.post('http://localhost:3000/person/postedByThisUser', fd);
+    obs.subscribe((data:any) => {
+      console.log(data);
+      this.childPostsCreateMethod();
+      },
+      (err:any) => {
+          console.log(err);
+      });
 
   }
 

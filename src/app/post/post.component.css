@@ -7,6 +7,10 @@ p{
   margin-right: 10px;
 }
 
+.form-popup{
+  position: relative;
+  top: 80px;
+}
 .row {
   padding: 5px;
   width:100%;

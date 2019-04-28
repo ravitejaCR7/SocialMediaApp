@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter , OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { PrimaryKeyServiceService } from '../primary-key-service.service';
@@ -12,6 +12,8 @@ import { PrimaryKeyServiceService } from '../primary-key-service.service';
 export class SearchEachChildComponent implements OnInit {
 
   @Input() userId:string;
+
+  @Output() notify = new EventEmitter<String>();
 
   userName: string = '';
 
@@ -27,6 +29,11 @@ export class SearchEachChildComponent implements OnInit {
           this.userName = data.userModel.name;
         });
 
+  }
+
+  testingEmit(){
+    console.log("sadjhbsfhjbhj");
+    this.notify.emit("dfgh");
   }
 
 }

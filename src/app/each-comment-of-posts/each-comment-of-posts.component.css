@@ -1,4 +1,6 @@
-/* .try{
-background-color: #69F0AE;
-color:white;
-} */
+.try{
+  max-height: 50px;
+  overflow: scroll;
+  border: 1px solid #ccc;
+  text-decoration: none;
+}

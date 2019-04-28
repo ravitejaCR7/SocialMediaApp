@@ -1,11 +1,27 @@
-.round{
-  border-radius: 10%;
-   /* width: 200px; */
-}
-.size{
-  width:550px;
-}
+
+
 .division{
-   /* background: rgba(0, 0, 0, 0.5); */
    background-color: white;
+}
+.hidden{
+  visibility: hidden;
+}
+.comment-btn{
+    margin: 4%;
+}
+#commentText{
+  margin-left: 2%;
+}
+.commentSection{
+  background-color: #fff;
+  margin-bottom: 15px;
+  margin-left: 0.01%;
+}
+.camera{
+  margin-top: 5px;
+  cursor: pointer;
+}
+.post,
+.camera{
+  margin-left: 10px;
 }
