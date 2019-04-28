@@ -11,6 +11,8 @@ export class NotificationsComponent implements OnInit {
 
   arrayOfCommentObjs:string[];
 
+  public requests = [];
+
   constructor( private http: HttpClient, private primaryKeyService: PrimaryKeyServiceService ) { }
 
   ngOnInit() {
@@ -24,6 +26,15 @@ export class NotificationsComponent implements OnInit {
           console.log(" lengthof comments  "+this.arrayOfCommentObjs.length);
 
         });
+
+
+
+
+
+    let obs = this.http.get("http://localhost:3000/person/getFriendRequestNotifications/"+this.primaryKeyService.getEmailId());
+    obs.subscribe((data:any) => {
+        this.requests = data.map(a => a.emailFrom);
+    });
 
   }
 

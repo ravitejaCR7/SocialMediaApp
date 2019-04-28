@@ -18,6 +18,7 @@ import { EachCommentOfPostsComponent } from './each-comment-of-posts/each-commen
 import { FriendProfileRequestComponent } from './friend-profile-request/friend-profile-request.component';
 import { MessageEachChildComponent } from './message-each-child/message-each-child.component';
 import { NotificationCommentsEachChildComponent } from './notification-comments-each-child/notification-comments-each-child.component';
+import { RequestsComponent } from './requests/requests.component';
 
 
 
@@ -29,7 +30,8 @@ import { NotificationCommentsEachChildComponent } from './notification-comments-
     EachCommentOfPostsComponent,
     FriendProfileRequestComponent,
     MessageEachChildComponent,
-    NotificationCommentsEachChildComponent
+    NotificationCommentsEachChildComponent,
+    RequestsComponent
   ],
   imports: [
     BrowserModule,

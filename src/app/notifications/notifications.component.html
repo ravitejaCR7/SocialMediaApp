@@ -1,3 +1,10 @@
+<div *ngIf="requests?.length">
+  <h2>Friend Requests</h2>
+  <div *ngFor="let request of requests">
+    <app-requests [email]="request"></app-requests>
+  </div>
+</div>
+
 <p>
   Comments Notification!
 </p>

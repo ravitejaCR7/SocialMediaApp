@@ -1,0 +1,22 @@
+<span *ngIf="response">
+  <div [ngSwitch]="accepted">
+    <div *ngSwitchCase="'1'">
+      <a [routerLink] = "['../friendAccount',email]">{{name}}</a>
+      <span class="accept">
+        <input type="radio" value="yes" name="commentability" (change) = respond($event)> Accept
+      </span>
+      <span class="reject">
+        <input type="radio" value="no" name="commentability" (change) = respond($event)> Reject
+      </span>
+    </div>
+    <div *ngSwitchCase="'2'">
+      <div class="form-group">
+        <a [routerLink] = "['../friendAccount',email]">{{name}}</a>
+        <select (change)="removeFriend($event)">
+          <option selected>Friends</option>
+          <option value="0">Remove</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</span>
