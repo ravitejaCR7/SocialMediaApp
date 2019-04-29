@@ -22,11 +22,17 @@ export class LandingPageComponent implements OnInit {
 
   profilePicture:String;
 
+  //isAdminFlags
+  isAdmin:boolean = false;
+
   constructor( private http: HttpClient , private router: Router , private primaryKeyService: PrimaryKeyServiceService ) {
    }
 
   ngOnInit() {
     this.primaryKey = this.primaryKeyService.getPrimaryKey();
+
+    this.isAdmin = this.primaryKeyService.getIsAdmin();
+    console.log("@@@ADmin : "+this.isAdmin);
 
     this.router.navigate(['../landing/myProfilePage']);
 

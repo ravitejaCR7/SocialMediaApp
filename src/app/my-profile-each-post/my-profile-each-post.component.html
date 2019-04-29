@@ -4,6 +4,7 @@
 <div  class = "size"style = " background-color: white;border: 1px solid #bbb;">
   <small>DatePosted : {{datePosted}}</small>
   <h3 class="col-md-12" style = " color:#1A237E">{{postTexted}}</h3>
+  <button *ngIf="isAdmin" (click)="deleteThisPost()">Delete!</button>
 
   <div *ngIf="imageFlag">
     <div class="card col-md-12">
@@ -25,7 +26,7 @@
 
     <div *ngIf = "showCommentsFlag">
       <div class = "row col-md-12 commentSection">
-      <input type="text" class="form-control col-md-10" id="commentText" name="commentText"   placeholder = " Write a comment..."(keyup) = "onCommentTextEntered($event)">
+      <input type="text" class="form-control col-md-9" id="commentText" name="commentText"   placeholder = " Write a comment..." (keydown.enter)="postNewComment()" [(ngModel)]="newCommentText" >
       <input type="file" id="files" class="hidden" name ="commentPic" accept="image/*|video/* " (change) = "onImageUpload($event)">
       <label for="files" class="camera  col-md-1"><span class="glyphicon">&#xe046;</span></label>
 

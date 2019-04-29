@@ -18,18 +18,39 @@ export class FriendProfilePageComponent implements OnInit {
   friendName: string;
 
   arrayOfIds:string[];
+  isConnected:boolean;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute,  private router: Router , private primaryKeyService: PrimaryKeyServiceService, private friendPrimaryKeyService: FriendPrimaryKeyService) { }
+  selectedPrivacySettings: String = ''; // selected privacy option
+  errorFlag:boolean = false; //to control the privacy settings
+
+  //isAdmin?
+  isAdmin:boolean = false;
+
+  constructor(private http: HttpClient, private route: ActivatedRoute,  private router: Router , private primaryKeyService: PrimaryKeyServiceService, private friendPrimaryKeyService: FriendPrimaryKeyService) {
+
+    this.friendEmailId = this.route.snapshot.paramMap.get('id');
+
+    this.route.params.subscribe(routeParams => {
+              // this.cityName = routeParams.name;
+              this.friendEmailId = routeParams.id;
+              console.log("testing constructor : "+this.friendEmailId);
+              this.ngOnInit();
+            });
+
+  }
 
   ngOnInit() {
 
 
-
-    this.friendEmailId = this.route.snapshot.paramMap.get('id');
+    // this.friendEmailId = this.route.snapshot.paramMap.get('id');
     this.friendPrimaryKeyService.setEmailId(this.friendEmailId);
     console.log("check "+ this.friendPrimaryKeyService.getEmailId());
     this.emailId = this.primaryKeyService.getEmailId();
     console.log('asdasd : ' + this.friendEmailId);
+
+    //getting the admin details
+    this.isAdmin = this.primaryKeyService.getIsAdmin();
+
     if (this.emailId === this.friendEmailId) {
       this.isFriend = true;
       console.log('Matched!! ' + this.emailId + ' ' + this.friendEmailId);
@@ -53,7 +74,28 @@ export class FriendProfilePageComponent implements OnInit {
       });
     }
 
-    //write logic to control the privacy
+
+
+    // if he is admin, then directly allow him to view the post's
+    if(this.isAdmin) {
+      this.isConnected = true;
+      console.log("!!!!  Admin : "+this.isConnected);
+    }
+    else {
+      //write logic to control the privacy
+      let gettingTheConnectionDetails = this.http.get('http://localhost:3000/person/areTheseTwoConnected/'+this.primaryKeyService.getEmailId()+"/"+this.friendPrimaryKeyService.getEmailId());
+      gettingTheConnectionDetails.subscribe((data:any) =>
+          {
+            console.log("gettingTheConnectionDetails "+data);
+
+            this.isConnected = data.res;
+
+            console.log("this.isConnected :  "+this.isConnected);
+
+          });
+    }
+
+
 
     let gettingThePostsObs = this.http.get('http://localhost:3000/person/postedByThisUser/'+this.friendPrimaryKeyService.getEmailId());
     gettingThePostsObs.subscribe((data:any) =>
@@ -61,11 +103,147 @@ export class FriendProfilePageComponent implements OnInit {
           console.log("All posts "+data);
 
           this.arrayOfIds = new Array();
-          this.arrayOfIds = data.userModel.map(a => a._id) ;
+          this.arrayOfIds = data.userModel.map(a => a._id).reverse() ;
           console.log(" length  "+this.arrayOfIds);
 
         });
 
 
   }
+
+
+  privacyChangedHandler(event: any){
+    this.selectedPrivacySettings = event.target.value;
+    console.log(this.selectedPrivacySettings);
+    console.log("privacy key of friend"+this.friendEmailId+" : : : : "+this.emailId);
+  }
+
+
+  privacyChange()
+  {
+    if(this.friendEmailId.length > 0 && this.selectedPrivacySettings.length > 0)
+    {
+      //send the new privacy value
+      let obs = this.http.put('http://localhost:3000/person/privacySettingsChange/'+this.friendEmailId,
+      {
+        "email":this.friendEmailId,
+        "privacy":this.selectedPrivacySettings
+      }
+      );
+      obs.subscribe((data:any) =>
+          {
+            console.log("successfully changed the privacy settings ");
+          }
+        );
+    }
+    else
+    {
+      //error with the email API
+      this.errorFlag = true;
+    }
+  }
+
+  //deleting this user
+  deleteThisUser() {
+
+    // 1)
+    let deletingFromUserTable = this.http.get('http://localhost:3000/person/deleteThisUserFromUserTable/'+this.friendEmailId);
+    deletingFromUserTable.subscribe((data:any) =>
+        {
+          console.log("deletingFromUserTable "+data);
+
+          if(data.res == true) {
+
+            // 2)
+            let deleteThisUserFromPrivacyTable = this.http.get('http://localhost:3000/person/deleteThisUserFromPrivacyTable/'+this.friendEmailId);
+            deleteThisUserFromPrivacyTable.subscribe((data:any) =>
+                {
+                  console.log("deleteThisUserFromPrivacyTable "+data);
+
+                  if(data.res == true) {
+
+                    // 3)
+                    let deleteThisUserFromChatTable = this.http.get('http://localhost:3000/person/deleteThisUserFromChatTable/'+this.friendEmailId);
+                    deleteThisUserFromChatTable.subscribe((data:any) =>
+                        {
+                          console.log("deleteThisUserFromChatTable "+data);
+
+                          if(data.res == true) {
+
+                            // 4)
+                            let deleteThisUserFromCommentsTable = this.http.get('http://localhost:3000/person/deleteThisUserFromCommentsTable/'+this.friendEmailId);
+                            deleteThisUserFromCommentsTable.subscribe((data:any) =>
+                                {
+                                  console.log("deleteThisUserFromCommentsTable "+data);
+
+                                  if(data.res == true) {
+
+                                    // 5)
+                                    let deleteThisUserFromFriendsTable = this.http.get('http://localhost:3000/person/deleteThisUserFromFriendsTable/'+this.friendEmailId);
+                                    deleteThisUserFromFriendsTable.subscribe((data:any) =>
+                                        {
+                                          console.log("deleteThisUserFromFriendsTable "+data);
+
+                                          if(data.res == true) {
+
+                                            // 6)
+                                            let deleteThisUserFromNotifyCommentsTable = this.http.get('http://localhost:3000/person/deleteThisUserFromNotifyCommentsTable/'+this.friendEmailId);
+                                            deleteThisUserFromNotifyCommentsTable.subscribe((data:any) =>
+                                                {
+                                                  console.log("deleteThisUserFromNotifyCommentsTable "+data);
+
+                                                  if(data.res == true) {
+
+                                                    // 7)
+                                                    let deleteThisUserFromNotifyFriendsTable = this.http.get('http://localhost:3000/person/deleteThisUserFromNotifyFriendsTable/'+this.friendEmailId);
+                                                    deleteThisUserFromNotifyFriendsTable.subscribe((data:any) =>
+                                                        {
+                                                          console.log("deleteThisUserFromNotifyFriendsTable "+data);
+
+                                                          if(data.res == true) {
+
+                                                            // 8)
+                                                            let deleteThisUserFromPostsTable = this.http.get('http://localhost:3000/person/deleteThisUserFromPostsTable/'+this.friendEmailId);
+                                                            deleteThisUserFromPostsTable.subscribe((data:any) =>
+                                                                {
+                                                                  console.log("deleteThisUserFromPostsTable "+data);
+
+                                                                  if(data.res == true) {
+
+                                                                    console.log("Deleted the user successfully!");
+                                                                    this.router.navigate(['../landing/myProfilePage']); //not working
+                                                                  }
+
+                                                                });
+
+                                                          }
+
+                                                        });
+
+                                                  }
+
+                                                });
+
+                                          }
+
+                                        });
+
+                                  }
+
+                                });
+
+                          }
+
+                        });
+
+                  }
+
+                });
+
+          }
+
+        });
+
+  }
+
 }

@@ -191,7 +191,7 @@ export class RegistrationUserComponent implements OnInit {
         let obs1 = this.http.post('http://localhost:3000/person/privacySettingsCreate',
           {
             "email":this.emailId,
-            "privacy":"public"
+            "privacy":"Public"
           }
         );
         obs1.subscribe((data:any) => {

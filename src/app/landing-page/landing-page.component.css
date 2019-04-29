@@ -5,28 +5,25 @@
 .page{
   background-color: #90caf9
 }
+
+.scrollmenu::-webkit-scrollbar {
+                display: none;
+            }
+
 .main-container{
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
     height: 80px;
-    position: fixed;
+    /* position: fixed; */
     z-index: 100;
     width: 100%;
     background-color: #333;
 }
 
-.results{
-  border-radius: 10px;
-  border: 1px solid #333;
-  padding: 3px;
-  font-size: 12px;
-  text-align: right;
-}
 p{
   text-transform: capitalize;
 }
 
 .search-box{
-  style:none;
   vertical-align: middle;
   display: block;
   outline: none;
@@ -52,12 +49,6 @@ p{
   width: 300px;
   border-radius: 10px;
   background-color: #ddd;
-}
-.row{
-  display: flex;
-    align-items: left;
-    justify-content: left;
-    margin-left: 20px;
 }
 
 .logo{

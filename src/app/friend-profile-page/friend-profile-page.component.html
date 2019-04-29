@@ -10,9 +10,22 @@
   </div>
 </div>
 
+<div  *ngIf="isAdmin">
+  <ul>
+   <li><input type = "radio" name = "privacySettings" value = "Public" (change) = "privacyChangedHandler($event)"><label>Public</label></li>
+   <li><input type = "radio" name = "privacySettings" value = "Friends of friends" (change) = "privacyChangedHandler($event)"><label>Friends of friends</label></li>
+   <li><input type = "radio" name = "privacySettings" value = "Friends" (change) = "privacyChangedHandler($event)"><label>Friends</label></li>
+   <li><input type = "radio" name = "privacySettings" value = "Private" (change) = "privacyChangedHandler($event)"><label>Private</label></li>
+ </ul>
 
+ <p *ngIf="errorFlag">Select at least one option</p>
+ <button (click)="privacyChange()">Update</button>
 
-<div class="posts offset-md-3 col-md-6">
+ <button (click)="deleteThisUser()">Delete this Account?</button>
+
+</div>
+
+<div class="posts offset-md-3 col-md-6" *ngIf="isConnected">
 <app-my-profile-each-post   *ngFor="let userids of arrayOfIds" [userId]="userids"></app-my-profile-each-post>
 </div>
 </div>

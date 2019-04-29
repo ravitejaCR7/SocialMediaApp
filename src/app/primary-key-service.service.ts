@@ -8,6 +8,8 @@ export class PrimaryKeyServiceService {
   userPrimaryKey: string = '';
   emailId: string = '';
 
+  isAdmin:boolean = false;
+
   constructor() { }
 
   setPrimaryKey(value: string) {
@@ -24,6 +26,14 @@ export class PrimaryKeyServiceService {
 
   getEmailId() {
     return this.emailId;
+  }
+
+  setIsAdmin(value: boolean) {
+    this.isAdmin = value;
+  }
+
+  getIsAdmin() {
+    return this.isAdmin;
   }
 
 }

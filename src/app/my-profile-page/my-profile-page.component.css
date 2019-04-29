@@ -1,9 +1,5 @@
 .profile{
-  position: relative;
-  margin-top: 85px;
-}
-.form-popup{
-  background-color: #fff;
+  margin-top: 5px;
 }
 
 .content{
@@ -46,8 +42,7 @@ label,
   margin-bottom: 5px;
 }
 .form-popup{
-  position: relative;
-  top: 80px;
+  background-color: #fff;
 }
 .row {
   padding: 5px;
