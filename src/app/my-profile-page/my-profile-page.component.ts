@@ -58,9 +58,9 @@ export class MyProfilePageComponent implements OnInit {
 
   }
 
-  posttext(event:any){
-    this.content = event.target.value;
-  }
+  // posttext(event:any){
+  //   this.content = event.target.value;
+  // }
 
   onImageUpload(event:any)
   {
@@ -93,6 +93,8 @@ export class MyProfilePageComponent implements OnInit {
 
     let obs = this.http.post('http://localhost:3000/person/postedByThisUser', fd);
     obs.subscribe((data:any) => {
+      this.content="";
+      this.selectedImageOrVideo=null;
       console.log(data);
       this.childPostsCreateMethod();
       },

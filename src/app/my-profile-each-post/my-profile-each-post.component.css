@@ -20,8 +20,10 @@
 .camera{
   margin-top: 5px;
   cursor: pointer;
+  text-decoration: none;
+
 }
-.post,
+/* .post,
 .camera{
   margin-left: 10px;
-}
+} */

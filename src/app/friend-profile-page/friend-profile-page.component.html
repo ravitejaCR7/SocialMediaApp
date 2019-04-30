@@ -2,26 +2,29 @@
 <div class="full-page col-md-12">
 <div class="profile col-md-6 offset-md-3" >
   <div class="row name">
-  <img src="{{ friendProfilePicture }}" class="rounded-circle" width="100px" height="100px" style="margin-left:25px;"/>
+  <img src="{{ friendProfilePicture }}" class="rounded-circle" width="150px" height="150px" style="margin-left:25px;"/>
+  <div class="row">
   <p>{{ friendName }}</p>
-  </div>
   <div class="status" *ngIf="!isFriend">
     <app-friend-profile-request></app-friend-profile-request>
   </div>
+  </div>
+  </div>
+
 </div>
 
-<div  *ngIf="isAdmin">
-  <ul>
-   <li><input type = "radio" name = "privacySettings" value = "Public" (change) = "privacyChangedHandler($event)"><label>Public</label></li>
-   <li><input type = "radio" name = "privacySettings" value = "Friends of friends" (change) = "privacyChangedHandler($event)"><label>Friends of friends</label></li>
-   <li><input type = "radio" name = "privacySettings" value = "Friends" (change) = "privacyChangedHandler($event)"><label>Friends</label></li>
-   <li><input type = "radio" name = "privacySettings" value = "Private" (change) = "privacyChangedHandler($event)"><label>Private</label></li>
- </ul>
-
+<div  *ngIf="isAdmin" class="admin-privacy">
+  <div class="list">
+    <ul>
+     <li><input type = "radio" name = "privacySettings" value = "Public" (change) = "privacyChangedHandler($event)"><label>Public</label></li>
+     <li><input type = "radio" name = "privacySettings" value = "Friends of friends" (change) = "privacyChangedHandler($event)"><label>Friends of friends</label></li>
+     <li><input type = "radio" name = "privacySettings" value = "Friends" (change) = "privacyChangedHandler($event)"><label>Friends</label></li>
+     <li><input type = "radio" name = "privacySettings" value = "Private" (change) = "privacyChangedHandler($event)"><label>Private</label></li>
+   </ul>
+   </div>
  <p *ngIf="errorFlag">Select at least one option</p>
- <button (click)="privacyChange()">Update</button>
-
- <button (click)="deleteThisUser()">Delete this Account?</button>
+ <button class="btn-success" (click)="privacyChange()">Update</button>
+ <button class="btn-warning" (click)="deleteThisUser()">Delete this Account?</button>
 
 </div>
 

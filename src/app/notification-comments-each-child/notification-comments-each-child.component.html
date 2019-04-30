@@ -1,7 +1,9 @@
-<p>{{senderName}} wants to comment on one of your post's</p>
-<div *ngIf="showButtons">
-  <button (click) = "acceptComment()">Accept</button>
-  <button (click) = "rejectComment()">Reject</button>
+<div class="col-md-12 cmnt-notify">
+  <p>{{senderName}} wants to comment on one of your post</p>
+  <div *ngIf="showButtons">
+    <button class="btn-success" (click) = "acceptComment()">Accept</button>
+    <button class="btn-warning" (click) = "rejectComment()">Reject</button>
+  </div>
+  <p>{{serverResponse}}</p>
+  <br/>
 </div>
-<p>{{serverResponse}}</p>
-<br/>

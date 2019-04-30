@@ -4,9 +4,9 @@
 <div class="form-popup col-md-6 offset-md-3 align-middle">
 
 <div class = "row postSection col-md-12">
-  <textarea class="col-md-12" rows="5" id="postText" name="postText" placeholder = "What's on your mind ?" (keyup) = "posttext($event)"></textarea>
+  <textarea class="col-md-12" rows="5" id="postText" name="postText" placeholder = "What's on your mind ?" [(ngModel)]="content"></textarea>
   <input type="file" id="files" class="hidden" name ="profilePic" accept="image/*|video/* " (change) = "onImageUpload($event)">
-  <label for="files" class="camera col-md-4" >Photo/Video<span class="glyphicon">&#xe046;</span></label>
+  <label for="files" class="camera col-md-4" >*Photo/Video<span class="glyphicon">&#xe046;</span></label>
   <strong class="col-md-3">Disable comments</strong>
   <input  class="cmtCheck" type="radio" value="yes" name="commentability" (change) = radioCommentType($event) checked> No
   <input  class="cmtCheck" type="radio" value="no" name="commentability" (change) = radioCommentType($event)> Yes

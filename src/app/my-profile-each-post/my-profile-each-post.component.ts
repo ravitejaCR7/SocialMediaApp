@@ -144,7 +144,7 @@ export class MyProfileEachPostComponent implements OnInit {
 
   onImageUpload(event:any)
   {
-    console.log("selected img : "+event.target.files[0]);
+    console.log("selected img : "+event);
     this.selectedImageOrVideo = event.target.files[0];
   }
 
@@ -196,7 +196,7 @@ export class MyProfileEachPostComponent implements OnInit {
         console.log(data);
 
         this.newCommentText = "";
-
+        this.selectedImageOrVideo = null;
         this.openComments();
         this.openComments();
 

@@ -1,14 +1,12 @@
 <div [ngSwitch]="isFriend">
   <div *ngSwitchCase="'1'">
-    <button (click)="addFriend()">Add Friend</button>
+    <button class="btn-success" (click)="addFriend()">Add Friend</button>
   </div>
   <div *ngSwitchCase="'2'">
-    <strong>Friend Request Sent</strong>
-    <button (click)="cancelRequest()">Cancel Request</button>
+    <button class="btn-info" (click)="cancelRequest()">Cancel Request</button>
   </div>
   <div *ngSwitchCase="'3'">
-    <strong>Friends</strong>
-    <button (click)="removeFriend()">Remove Friend</button>
+    <button class="btn-warning" (click)="removeFriend()">Remove Friend</button>
   </div>
   <div *ngSwitchCase="'4'">
     <strong>Respond to Friend Request</strong>

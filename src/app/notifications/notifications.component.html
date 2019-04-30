@@ -1,12 +1,10 @@
-<div *ngIf="requests?.length">
-  <h2>Friend Requests</h2>
-  <div *ngFor="let request of requests">
-    <app-requests [email]="request"></app-requests>
+
+  <div *ngIf="requests?.length" class="offset-md-4 col-md-4 friend-notify">
+    <p>Friend Requests:</p>
+    <div *ngFor="let request of requests">
+      <app-requests [email]="request"></app-requests>
+    </div>
   </div>
+  <div class="offset-md-4 col-md-4 cmnt-notify">
+  <app-notification-comments-each-child *ngFor="let commentids of arrayOfCommentObjs" [commentId]="commentids"></app-notification-comments-each-child>
 </div>
-
-<p>
-  Comments Notification!
-</p>
-
-<app-notification-comments-each-child *ngFor="let commentids of arrayOfCommentObjs" [commentId]="commentids"></app-notification-comments-each-child>
