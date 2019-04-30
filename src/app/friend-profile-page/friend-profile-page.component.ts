@@ -23,6 +23,10 @@ export class FriendProfilePageComponent implements OnInit {
   selectedPrivacySettings: String = ''; // selected privacy option
   errorFlag:boolean = false; //to control the privacy settings
 
+
+  //searching the posts content
+  searchForPostsContentString:String ="";
+
   //isAdmin?
   isAdmin:boolean = false;
 
@@ -95,7 +99,11 @@ export class FriendProfilePageComponent implements OnInit {
           });
     }
 
+    this.postsMadeByThisUserMethod();
 
+  }
+
+  postsMadeByThisUserMethod() {
 
     let gettingThePostsObs = this.http.get('http://localhost:3000/person/postedByThisUser/'+this.friendPrimaryKeyService.getEmailId());
     gettingThePostsObs.subscribe((data:any) =>
@@ -243,6 +251,35 @@ export class FriendProfilePageComponent implements OnInit {
           }
 
         });
+
+  }
+
+
+  searchForPostsContent(event:any) {
+
+    this.searchForPostsContentString = event.target.value;
+
+    if( this.searchForPostsContentString.length > 0 ) {
+
+      this.arrayOfIds = new Array();
+
+      let searchPostsUsingContent = this.http.get('http://localhost:3000/person/searchPostsUsingTitle/'+this.friendEmailId+"/"+this.searchForPostsContentString);
+      searchPostsUsingContent.subscribe((data:any) =>
+          {
+            console.log("searchPostsUsingContent "+data.error);
+
+            if( data.error == false ) {
+              this.arrayOfIds = data.userModel.map(a => a._id).reverse() ;
+            }
+
+          });
+
+    }
+    else {
+
+      this.postsMadeByThisUserMethod();
+
+    }
 
   }
 

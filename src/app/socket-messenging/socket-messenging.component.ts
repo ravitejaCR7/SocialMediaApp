@@ -56,6 +56,7 @@ export class SocketMessengingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.messageArray = [];
     console.log("mess : "+this.friendEmailId);
     console.log("4321 : "+this.friendEmailId);
 
