@@ -133,8 +133,21 @@ export class RegistrationUserComponent implements OnInit {
   		if ($('#useremail').val().length != 0) {
   		if (/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test($('#useremail').val())) {
   			$('#useremail + span').removeClass('info');
-  			$('#useremail + span').html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
-  				$('#useremail + span').addClass('ok');
+
+        $.post('http://localhost:3000/person/emailDuplicationCheck',
+             {
+               email: $('#useremail').val()
+             },
+             function(data, status){
+               if(data)
+                 $('#useremail + span').text('Email Id is taken');
+               else {
+                 $('#useremail + span').html("<span style='font-size:20px; color:#fff'>&#9989;</span>");
+           				$('#useremail + span').addClass('ok');
+               }                 
+             });
+
+
   	} else {
   			$('#useremail + span').text('Invalid e-mail');
   				$('#useremail + span').addClass('error');

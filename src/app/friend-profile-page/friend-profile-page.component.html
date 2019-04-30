@@ -29,6 +29,7 @@
 </div>
 
 <div class="posts offset-md-3 col-md-6" *ngIf="isConnected">
-<app-my-profile-each-post   *ngFor="let userids of arrayOfIds" [userId]="userids"></app-my-profile-each-post>
+  <input type="text" (keyup) = "searchForPostsContent($event)">
+  <app-my-profile-each-post   *ngFor="let userids of arrayOfIds" [userId]="userids"></app-my-profile-each-post>
 </div>
 </div>
