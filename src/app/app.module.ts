@@ -19,6 +19,7 @@ import { FriendProfileRequestComponent } from './friend-profile-request/friend-p
 import { MessageEachChildComponent } from './message-each-child/message-each-child.component';
 import { NotificationCommentsEachChildComponent } from './notification-comments-each-child/notification-comments-each-child.component';
 import { RequestsComponent } from './requests/requests.component';
+import { MyProfileEachPostRandomComponent } from './my-profile-each-post-random/my-profile-each-post-random.component';
 
 
 
@@ -31,7 +32,8 @@ import { RequestsComponent } from './requests/requests.component';
     FriendProfileRequestComponent,
     MessageEachChildComponent,
     NotificationCommentsEachChildComponent,
-    RequestsComponent
+    RequestsComponent,
+    MyProfileEachPostRandomComponent
   ],
   imports: [
     BrowserModule,
